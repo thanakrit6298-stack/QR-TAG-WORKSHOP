@@ -264,6 +264,27 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
   .tag-qr-wrap img{width:160px!important;height:160px!important}
   body{background:#fff}
 }
+
+/* ═══ LAYOUT VIEW ═══ */
+.lsv-wrap{display:flex;flex-direction:column;gap:14px}
+.lsv-box{background:#030d17;border:1px solid var(--b2);border-radius:8px;overflow:hidden;position:relative}
+.lsv-box svg{width:100%;height:auto;display:block}
+.zone-g{cursor:pointer}
+.zone-g rect,.zone-g polygon{transition:opacity .15s,stroke-width .15s}
+.zone-g:hover rect{opacity:.75!important}
+.zone-g.sel rect{stroke-width:2.5!important}
+.zdp{background:var(--s1);border:1px solid var(--b2);border-radius:8px;padding:16px;animation:mIn .2s ease}
+.zdp-hd{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--b1)}
+.zdp-ico{width:32px;height:32px;border-radius:6px;background:var(--cyan-lo);border:1px solid var(--cyan-bd);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.zdp-name{font-size:14px;font-weight:700;color:var(--hi);flex:1}
+.zdp-badge{font-family:var(--mono);font-size:10px;color:var(--lo);background:var(--s3);border:1px solid var(--b2);padding:2px 10px;border-radius:10px}
+.zdp-x{background:transparent;border:1px solid var(--b2);color:var(--lo);border-radius:50%;width:26px;height:26px;cursor:pointer;font-size:11px;display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0}
+.zdp-x:hover{background:var(--red-lo);color:var(--red-hi);border-color:var(--red-bd)}
+.zdp-empty{text-align:center;padding:28px 16px;color:var(--lo);font-family:var(--mono);font-size:11px;letter-spacing:.5px}
+.layout-legend{display:flex;flex-wrap:wrap;gap:8px}
+.leg-item{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--mid);font-family:var(--mono);letter-spacing:.3px}
+.leg-box{width:10px;height:10px;border-radius:2px;flex-shrink:0}
+.lsv-tip{font-family:var(--mono);font-size:10px;color:var(--lo);letter-spacing:.5px;text-align:right}
 </style>
 </head>
 <body>
@@ -296,6 +317,10 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
     <div class="kpi-row k-hold" id="kpi-hold" onclick="setF('hold')"><span class="kpi-lbl">ON HOLD</span><span class="kpi-val" id="k-hold">0</span></div>
   </div>
   <div id="sb-nav">
+    <div class="nav-sec">// Views</div>
+    <button class="nav-item" id="nav-layout" onclick="showLayoutView()">
+      <span class="nav-ico">🏭</span>Workshop Layout<span class="nav-ct">MAP</span>
+    </button>
     <div class="nav-sec">// พื้นที่ / Area</div>
     <div id="nav-areas"></div>
     <div class="nav-sec">// ประเภทงาน / Job Type</div>
@@ -365,6 +390,9 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
           <option value="hold">⛔ On Hold</option>
         </select>
       </div>
+      <div class="fg1"><label class="flbl">📌 Workshop Location</label>
+        <select class="fs" id="f-loc"></select>
+      </div>
       <div class="fg1 full"><label class="flbl">Details / Notes</label><textarea class="fta" id="f-det" placeholder="รายละเอียดงาน..."></textarea></div>
     </div>
   </div>
@@ -389,6 +417,7 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
     <div class="tab-strip">
       <button class="tab-btn active" id="tab-a" onclick="switchTab('areas')">📍 Areas</button>
       <button class="tab-btn" id="tab-t" onclick="switchTab('types')">🔧 Job Types</button>
+      <button class="tab-btn" id="tab-z" onclick="switchTab('zones')">🏭 Zone Names</button>
     </div>
     <div id="set-list"></div>
     <div class="add-row"><input class="fi" id="new-item" placeholder="Add new item..." onkeydown="if(event.key==='Enter')addItem()"><button class="btn btn-cyan" onclick="addItem()">ADD</button></div>
@@ -448,6 +477,17 @@ try{
 ══════════════════════════════════════ */
 const DEF_AREAS=['Production A','Production B','Maintenance','QC / ตรวจสอบ','Warehouse','Engineering'];
 const DEF_TYPES=['งานเชื่อม','งานกลึง','งานประกอบ','งานซ่อมแก้ไข','อื่นๆ'];
+/* Workshop layout zones — linked to WO location field */
+var LAYOUT_ZONES=[
+  {id:'z1', name:'Zone 1',          label:'ZONE 1',      rects:[{x:2,  y:182,w:112,h:101}],                              fill:'rgba(16,185,129,.18)', stroke:'#34d399',tx:58, ty:233},
+  {id:'z2', name:'Zone 2',          label:'ZONE 2',      rects:[{x:352,y:286,w:190,h:140}],                              fill:'rgba(6,182,212,.18)',  stroke:'#22d3ee',tx:447,ty:356},
+  {id:'z3', name:'Zone 3',          label:'ZONE 3',      rects:[{x:546,y:286,w:156,h:140}],                              fill:'rgba(139,92,246,.2)', stroke:'#a78bfa',tx:624,ty:356},
+  {id:'z4', name:'Zone 4',          label:'ZONE 4',      rects:[{x:448,y:44, w:178,h:134}],                              fill:'rgba(245,158,11,.18)',stroke:'#fbbf24',tx:537,ty:111},
+  {id:'z5', name:'Zone 5',          label:'ZONE 5',      rects:[{x:704,y:44, w:192,h:134}],                              fill:'rgba(139,92,246,.2)', stroke:'#a78bfa',tx:800,ty:111},
+  {id:'mac',name:'Machining Area',  label:'MACHINING',   rects:[{x:118,y:182,w:228,h:101},{x:2,  y:286,w:346,h:140}],   fill:'rgba(234,179,8,.15)', stroke:'#fde047',tx:232,ty:233},
+  {id:'fab',name:'Fabrication Area',label:'FABRICATION', rects:[{x:446,y:182,w:450,h:101},{x:706,y:286,w:190,h:140}],   fill:'rgba(249,115,22,.15)',stroke:'#fb923c',tx:671,ty:233},
+  {id:'sto',name:'Storage',         label:'STORAGE',     rects:[{x:118,y:44, w:232,h:134}],                              fill:'rgba(100,116,139,.2)',stroke:'#94a3b8',tx:234,ty:111},
+];
 const ST={
   pending:   {label:'⏳ รอดำเนินการ',  short:'PENDING',    act:'act-p'},
   inProgress:{label:'⚙ กำลังดำเนินการ',short:'IN PROGRESS',act:'act-i'},
@@ -455,7 +495,8 @@ const ST={
   hold:      {label:'⛔ On Hold',        short:'ON HOLD',    act:'act-h'},
 };
 const VW_ROWS=[
-  {ico:'📍',lbl:'Area',key:'area'},
+  {ico:'📌',lbl:'Workshop Location',key:'location'},
+  {ico:'📍',lbl:'Area / Department',key:'area'},
   {ico:'🔧',lbl:'Job Type',key:'jobType'},
   {ico:'📅',lbl:'Date Received',key:'dateReceived',fmt:true},
   {ico:'🎯',lbl:'Due Date',key:'dueDate',fmt:true},
@@ -467,6 +508,7 @@ const PW_HASH='6895b9ae20a5198183073f46d0b4a70342a13d12add16250511737118b5f63fd'
 
 var wos=[],areas=[...DEF_AREAS],jobTypes=[...DEF_TYPES];
 var isAdmin=false,filter='all',sq='',sTab='areas',editKey=null,delKey=null,setEditIdx=null;
+var viewMode='list',selectedZone=null;
 
 /* ══════════════════════════════════════
    ROUTER
@@ -526,6 +568,10 @@ async function startDash(){
       var d=ss.val();
       if(d.areas) areas=toArr(d.areas);
       if(d.jobTypes) jobTypes=toArr(d.jobTypes);
+      if(d.zoneNames){
+        var zn=toArr(d.zoneNames);
+        zn.forEach(function(name,i){if(LAYOUT_ZONES[i])LAYOUT_ZONES[i].name=name;});
+      }
     }else{
       ST_REF.child('areas').set(DEF_AREAS);
       ST_REF.child('jobTypes').set(DEF_TYPES);
@@ -534,7 +580,8 @@ async function startDash(){
     WO_REF.on('value',function(snap){
       var d=snap.val();
       wos=d?Object.entries(d).map(function(e){return Object.assign({},e[1],{fbKey:e[0]});}).sort(function(a,b){return(b.createdAt||0)-(a.createdAt||0);}):[];
-      updateKPI();buildNav();render();
+      updateKPI();buildNav();
+      if(viewMode==='layout')renderLayout();else render();
     });
   }catch(e){
     document.getElementById('content').innerHTML=
@@ -585,12 +632,16 @@ function buildNav(){
 
 /* ── FILTER ── */
 function setF(f){
-  filter=f;updateKPI();buildNav();render();
+  viewMode='list';selectedZone=null;filter=f;
+  updateKPI();buildNav();render();
+  var nl=document.getElementById('nav-layout');
+  if(nl)nl.classList.remove('active');
   if(window.innerWidth<=768)closeSB();
 }
 
 /* ── RENDER ── */
 function render(){
+  if(viewMode==='layout'){renderLayout();return;}
   var list=wos.slice();
   if(filter==='all'){}
   else if(filter.startsWith('area:'))list=list.filter(function(w){return w.area===filter.slice(5);});
@@ -653,6 +704,7 @@ function woRow(wo){
       '<div class="wo-meta">'+
         '<span class="mc">📍 '+x(wo.area)+'</span>'+
         '<span class="mc">🔧 '+x(wo.jobType)+'</span>'+
+        (wo.location?'<span class="mc">📌 '+x(wo.location)+'</span>':'')+
         '<span class="mc">📅 รับ '+fmtD(wo.dateReceived)+'</span>'+
         '<span class="mc">🎯 ครบ '+(fmtD(wo.dueDate)||'—')+'</span>'+
         (wo.requestedBy?'<span class="mc">👤 '+x(wo.requestedBy)+'</span>':'')+
@@ -701,13 +753,18 @@ function closeTag(){document.getElementById('m-tag').classList.remove('open');}
 function fillSel(){
   document.getElementById('f-area').innerHTML=areas.map(function(a){return'<option>'+x(a)+'</option>';}).join('');
   document.getElementById('f-type').innerHTML=jobTypes.map(function(t){return'<option>'+x(t)+'</option>';}).join('');
+  var locEl=document.getElementById('f-loc');
+  if(locEl){
+    locEl.innerHTML='<option value="">— ไม่ระบุ (Unassigned) —</option>'
+      +LAYOUT_ZONES.map(function(z){return'<option value="'+x(z.name)+'">'+x(z.name)+'</option>';}).join('');
+  }
 }
 function openAdd(){
   editKey=null;fillSel();
   document.getElementById('me-tag').textContent='NEW WO';
   document.getElementById('me-ttl').textContent='Create Work Order';
   document.getElementById('me-sub').textContent='Fill in all required fields';
-  ['f-wono','f-name','f-req','f-det'].forEach(function(id){document.getElementById(id).value='';});
+  ['f-wono','f-name','f-req','f-det','f-loc'].forEach(function(id){document.getElementById(id).value='';});
   document.getElementById('f-prio').value='ปกติ (NORMAL)';
   document.getElementById('f-stat').value='pending';
   document.getElementById('f-date').value=todayISO();
@@ -731,6 +788,7 @@ function openEdit(key){
   document.getElementById('f-due').value=wo.dueDate||'';
   document.getElementById('f-req').value=wo.requestedBy||'';
   document.getElementById('f-det').value=wo.details||'';
+  document.getElementById('f-loc').value=wo.location||'';
   document.getElementById('m-edit').classList.add('open');
 }
 function closeEdit(){document.getElementById('m-edit').classList.remove('open');}
@@ -743,6 +801,7 @@ async function saveWO(){
   var data={
     woNumber:document.getElementById('f-wono').value.trim()||genWO(),
     jobName:name,area:area,jobType:type,
+    location:document.getElementById('f-loc').value,
     priority:document.getElementById('f-prio').value,
     status:document.getElementById('f-stat').value,
     dateReceived:document.getElementById('f-date').value,
@@ -770,16 +829,67 @@ function switchTab(t){
   sTab=t;setEditIdx=null;
   document.getElementById('tab-a').classList.toggle('active',t==='areas');
   document.getElementById('tab-t').classList.toggle('active',t==='types');
-  document.getElementById('new-item').value='';
+  document.getElementById('tab-z').classList.toggle('active',t==='zones');
+  var ni=document.getElementById('new-item');
+  if(ni){ni.style.display=(t==='zones'?'none':'');ni.value='';}
+  var ab=document.querySelector('.add-row .btn-cyan');
+  if(ab) ab.style.display=(t==='zones'?'none':'');
   renderSet();
 }
-function curL(){return sTab==='areas'?areas:jobTypes;}
+function curL(){return sTab==='areas'?areas:(sTab==='zones'?LAYOUT_ZONES.map(function(z){return z.name;}):jobTypes);}
 function saveL(arr){
   if(sTab==='areas'){areas=arr;ST_REF.child('areas').set(arr);}
+  else if(sTab==='zones'){
+    /* update LAYOUT_ZONES names in-place */
+    arr.forEach(function(name,i){if(LAYOUT_ZONES[i])LAYOUT_ZONES[i].name=name;});
+    ST_REF.child('zoneNames').set(arr);
+    if(viewMode==='layout')renderLayout();
+  }
   else{jobTypes=arr;ST_REF.child('jobTypes').set(arr);}
   buildNav();
 }
+function saveZoneName(i){
+  var inp=document.getElementById('sei');if(!inp)return;
+  var v=inp.value.trim();if(!v)return;
+  var arr=LAYOUT_ZONES.map(function(z){return z.name;});
+  arr[i]=v;
+  LAYOUT_ZONES[i].name=v;
+  ST_REF.child('zoneNames').set(arr);
+  setEditIdx=null;renderSet();
+  if(viewMode==='layout')renderLayout();
+  /* Rebuild f-loc dropdown if open */
+  if(document.getElementById('m-edit').classList.contains('open')){
+    var cur=document.getElementById('f-loc').value;
+    fillSel();
+    document.getElementById('f-loc').value=cur;
+  }
+  toast('Zone name updated','ok');
+}
 function renderSet(){
+  /* Zones tab: special inline-edit only (no add/delete) */
+  if(sTab==='zones'){
+    var el2=document.getElementById('set-list');el2.innerHTML='';
+    LAYOUT_ZONES.forEach(function(z,i){
+      var d=document.createElement('div');d.className='set-item';
+      if(setEditIdx===i){
+        var inp=document.createElement('input');inp.className='fi';inp.value=z.name;inp.style.flex='1';inp.id='sei';
+        inp.onkeydown=function(e){if(e.key==='Enter')saveZoneName(i);};
+        d.appendChild(inp);
+        d.appendChild(mkSBtn('Save','s-sv',function(){saveZoneName(i);}));
+        d.appendChild(mkSBtn('Cancel','s-cx',function(){setEditIdx=null;renderSet();}));
+        setTimeout(function(){inp.focus();},40);
+      } else {
+        var dot=document.createElement('div');dot.className='set-dot';dot.style.background='var(--cyan)';
+        var sp=document.createElement('span');sp.className='set-txt';
+        sp.innerHTML='<span style="font-family:var(--mono);font-size:9px;color:var(--lo);margin-right:8px">'+('Z'+(i+1))+'</span>'+x(z.name);
+        var sa=document.createElement('div');sa.className='set-acts';
+        sa.appendChild(mkSBtn('Rename','s-ed',(function(i2){return function(){setEditIdx=i2;renderSet();};})(i)));
+        d.appendChild(dot);d.appendChild(sp);d.appendChild(sa);
+      }
+      el2.appendChild(d);
+    });
+    return;
+  }
   var items=curL(),el=document.getElementById('set-list');el.innerHTML='';
   items.forEach(function(item,i){
     var d=document.createElement('div');d.className='set-item';
@@ -861,6 +971,222 @@ function applyMode(){
   show('btn-in',isAdmin?'none':'inline-flex');
   show('bdg-pub',isAdmin?'none':'flex');
   render();
+}
+
+/* ═══ LAYOUT VIEW FUNCTIONS ═══ */
+function showLayoutView(){
+  viewMode='layout';selectedZone=null;filter='all';
+  updateKPI();
+  document.querySelectorAll('.kpi-row').forEach(function(r){r.classList.remove('active');});
+  document.getElementById('kpi-all').classList.add('active');
+  document.querySelectorAll('#sb-nav .nav-item').forEach(function(b){b.classList.remove('active');});
+  var nl=document.getElementById('nav-layout');if(nl)nl.classList.add('active');
+  renderLayout();
+  if(window.innerWidth<=768)closeSB();
+}
+
+function selectZone(zid){
+  selectedZone=(selectedZone===zid?null:zid);
+  renderLayout();
+  /* Re-attach handlers */
+  var el=document.getElementById('content');
+  el.querySelectorAll('[data-zid]').forEach(function(g){
+    g.addEventListener('click',function(){selectZone(this.getAttribute('data-zid'));});
+  });
+}
+
+function renderLayout(){
+  var el=document.getElementById('content');
+  var W=900,H=430;
+
+  /* Count WOs per zone */
+  var cnt={};
+  LAYOUT_ZONES.forEach(function(z){
+    cnt[z.id]=wos.filter(function(w){return w.location===z.name;});
+  });
+
+  /* ── BUILD SVG ── */
+  var s='<svg viewBox="0 0 '+W+' '+H+'" xmlns="http://www.w3.org/2000/svg">';
+
+  /* Defs: grid pattern + arrow marker */
+  s+='<defs>'
+   +'<pattern id="wg" width="40" height="40" patternUnits="userSpaceOnUse">'
+   +'<path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(6,182,212,0.07)" stroke-width="0.5"/>'
+   +'</pattern>'
+   +'<marker id="sarr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">'
+   +'<path d="M0,0 L6,3 L0,6 Z" fill="#22d3ee"/>'
+   +'</marker>'
+   +'</defs>';
+
+  /* Background */
+  s+='<rect width="'+W+'" height="'+H+'" fill="#030d17"/>';
+  s+='<rect width="'+W+'" height="'+H+'" fill="url(#wg)"/>';
+
+  /* Outer wall */
+  s+='<rect x="1" y="1" width="'+(W-2)+'" height="'+(H-2)+'" fill="none" stroke="#1f4068" stroke-width="2" rx="3"/>';
+
+  /* ── Top wall with shutter gaps ── */
+  /* Gaps: S1=x42-102, S2=x356-416, S3=x642-702 */
+  [[1,42],[102,356],[416,642],[702,W-1]].forEach(function(seg){
+    s+='<rect x="'+seg[0]+'" y="1" width="'+(seg[1]-seg[0])+'" height="44" fill="#0a1d2f" stroke="#163050" stroke-width="0.5"/>';
+  });
+
+  /* Shutter openings */
+  [{x:42,cx:72,n:1},{x:356,cx:386,n:2},{x:642,cx:672,n:3}].forEach(function(sh){
+    s+='<rect x="'+sh.x+'" y="1" width="60" height="44" fill="rgba(6,182,212,0.07)" stroke="#22d3ee" stroke-width="0.8" stroke-dasharray="4,3"/>';
+    s+='<line x1="'+sh.cx+'" y1="7" x2="'+sh.cx+'" y2="32" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#sarr)"/>';
+    s+='<text x="'+sh.cx+'" y="47" text-anchor="middle" fill="#2e5470" font-size="7.5" font-family="monospace" letter-spacing="1">S'+sh.n+'</text>';
+  });
+
+  /* ── Non-interactive structural blocks ── */
+  /* Upper-left storage block */
+  s+='<rect x="118" y="44" width="232" height="134" fill="#0a1d2f" stroke="#163050" stroke-width="1"/>';
+  s+='<text x="234" y="101" text-anchor="middle" dominant-baseline="middle" fill="#1f4068" font-size="9" font-family="monospace" letter-spacing="2">STORAGE /</text>';
+  s+='<text x="234" y="115" text-anchor="middle" dominant-baseline="middle" fill="#1f4068" font-size="9" font-family="monospace" letter-spacing="2">EQUIPMENT</text>';
+  /* Upper-center equipment blocks */
+  s+='<rect x="354" y="44" width="90" height="134" fill="#0a1d2f" stroke="#163050" stroke-width="1"/>';
+  s+='<text x="399" y="111" text-anchor="middle" dominant-baseline="middle" fill="#1f4068" font-size="8" font-family="monospace">EQUIP</text>';
+  /* Mid-center equipment */
+  s+='<rect x="354" y="182" width="88" height="101" fill="#0a1d2f" stroke="#163050" stroke-width="1"/>';
+  s+='<text x="398" y="233" text-anchor="middle" dominant-baseline="middle" fill="#1f4068" font-size="8" font-family="monospace">EQUIP</text>';
+  /* Wall between Z4 and Z5 */
+  s+='<rect x="630" y="44" width="70" height="134" fill="#0a1d2f" stroke="#163050" stroke-width="1"/>';
+
+  /* Separator dashed lines */
+  s+='<line x1="2" y1="182" x2="'+(W-2)+'" y2="182" stroke="#163050" stroke-width="1" stroke-dasharray="8,5"/>';
+  s+='<line x1="2" y1="285" x2="'+(W-2)+'" y2="285" stroke="#163050" stroke-width="1" stroke-dasharray="8,5"/>';
+
+  /* ── CLICKABLE ZONES ── */
+  LAYOUT_ZONES.forEach(function(z){
+    var wosHere=cnt[z.id]||[];
+    var n=wosHere.length;
+    var isSel=(selectedZone===z.id);
+    var sw=isSel?2.5:1.2;
+    var fo=isSel?1:0.88;
+
+    z.rects.forEach(function(r,ri){
+      s+='<g data-zid="'+z.id+'" class="zone-g'+(isSel?' sel':'')+'" style="cursor:pointer">';
+      s+='<rect x="'+r.x+'" y="'+r.y+'" width="'+r.w+'" height="'+r.h
+       +'" fill="'+z.fill+'" opacity="'+fo+'" stroke="'+z.stroke+'" stroke-width="'+sw+'"/>';
+
+      if(ri===0){
+        /* Primary label */
+        s+='<text x="'+z.tx+'" y="'+z.ty
+         +'" text-anchor="middle" dominant-baseline="middle"'
+         +' fill="'+z.stroke+'" font-size="10" font-weight="700"'
+         +' font-family="monospace" letter-spacing="1.2">'+z.label+'</text>';
+        /* WO count badge */
+        if(n>0){
+          var bx=r.x+r.w-16,by=r.y+12;
+          s+='<circle cx="'+bx+'" cy="'+by+'" r="11" fill="'+z.stroke+'"/>';
+          s+='<text x="'+bx+'" y="'+by
+           +'" text-anchor="middle" dominant-baseline="middle"'
+           +' fill="#030d17" font-size="9" font-weight="800" font-family="monospace">'+n+'</text>';
+        }
+        /* Urgent indicator */
+        var urgent=wosHere.filter(function(w){return(w.priority||'').includes('URGENT')&&w.status!='done';});
+        if(urgent.length>0){
+          s+='<circle cx="'+(r.x+14)+'" cy="'+(r.y+12)+'" r="6" fill="rgba(239,68,68,0.9)">';
+          s+='<animate attributeName="r" values="6;8;6" dur="1.2s" repeatCount="indefinite"/>';
+          s+='</circle>';
+          s+='<text x="'+(r.x+14)+'" y="'+(r.y+12)+'" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-size="7" font-weight="800" font-family="monospace">!</text>';
+        }
+      } else {
+        /* Secondary rect — smaller label */
+        s+='<text x="'+(r.x+r.w/2)+'" y="'+(r.y+r.h/2)
+         +'" text-anchor="middle" dominant-baseline="middle"'
+         +' fill="'+z.stroke+'" font-size="9" font-weight="600"'
+         +' font-family="monospace" letter-spacing="1">'+z.label+'</text>';
+        if(n>0){
+          var bx2=r.x+r.w-14,by2=r.y+12;
+          s+='<circle cx="'+bx2+'" cy="'+by2+'" r="10" fill="'+z.stroke+'"/>';
+          s+='<text x="'+bx2+'" y="'+by2
+           +'" text-anchor="middle" dominant-baseline="middle"'
+           +' fill="#030d17" font-size="8" font-weight="800" font-family="monospace">'+n+'</text>';
+        }
+      }
+      s+='</g>';
+    });
+  });
+
+  /* Watermark */
+  s+='<text x="'+(W-8)+'" y="'+(H-6)+'" text-anchor="end" fill="#163050" font-size="7" font-family="monospace" letter-spacing="1.5">WORKSHOP FLOOR PLAN</text>';
+  s+='</svg>';
+
+  /* ── LEGEND ── */
+  var leg='<div class="layout-legend">';
+  LAYOUT_ZONES.forEach(function(z){
+    leg+='<span class="leg-item"><span class="leg-box" style="background:'+z.stroke+';opacity:.7"></span>'+z.name+'</span>';
+  });
+  leg+='</div>';
+  leg+='<div class="lsv-tip">กดที่พื้นที่เพื่อดูงานในบริเวณนั้น</div>';
+
+  /* ── ZONE DETAIL PANEL ── */
+  var detail='';
+  if(selectedZone){
+    var zInfo=LAYOUT_ZONES.find(function(z){return z.id===selectedZone;});
+    if(zInfo){
+      var zWOs=cnt[selectedZone]||[];
+      detail='<div class="zdp">'
+       +'<div class="zdp-hd">'
+       +'<div class="zdp-ico">📌</div>'
+       +'<div class="zdp-name">'+x(zInfo.name)+'</div>'
+       +'<span class="zdp-badge">'+zWOs.length+' WO</span>'
+       +'<button class="zdp-x" onclick="selectedZone=null;renderLayout()">✕</button>'
+       +'</div>';
+      if(zWOs.length===0){
+        detail+='<div class="zdp-empty">📭 &nbsp; ไม่มีงานในพื้นที่นี้ในขณะนี้</div>';
+      } else {
+        detail+=zWOs.map(function(wo){
+          var sc=ST[wo.status]||ST.pending;
+          var isU=(wo.priority||'').includes('URGENT');
+          var ctrl=isAdmin?
+            '<div class="wo-ctrl">'
+             +Object.keys(ST).map(function(k){return'<button class="sc-btn'+(wo.status===k?' '+ST[k].act:'')+'" onclick="setStat(\''+wo.fbKey+'\',\''+k+'\')">'+ST[k].label+'</button>';}).join('')
+             +'<div class="sc-div"></div>'
+             +'<button class="sc-btn sc-qr" onclick="showTag(\''+wo.fbKey+'\')">🏷 QR Tag</button>'
+             +'</div>'
+             +'<div class="wo-acts">'
+             +'<button class="ra" onclick="openEdit(\''+wo.fbKey+'\')" title="Edit">✏</button>'
+             +'<button class="ra del" onclick="askDel(\''+wo.fbKey+'\')" title="Delete">🗑</button>'
+             +'</div>':'';
+          return '<div class="wo-row st-'+(wo.status||'pending')+'">'
+            +'<div class="wo-stripe"></div>'
+            +'<div class="wo-body">'
+              +'<div class="wo-top">'
+                +'<span class="wo-num">'+x(wo.woNumber)+'</span>'
+                +(isU?'<span class="urg">! URGENT</span>':'')
+                +'<span class="st-pill p-'+(wo.status||'pending')+'">'+sc.label+'</span>'
+              +'</div>'
+              +'<div class="wo-name">'+x(wo.jobName)+'</div>'
+              +'<div class="wo-meta">'
+                +'<span class="mc">📍 '+x(wo.area)+'</span>'
+                +'<span class="mc">🔧 '+x(wo.jobType)+'</span>'
+                +'<span class="mc">📅 รับ '+fmtD(wo.dateReceived)+'</span>'
+                +'<span class="mc">🎯 ครบ '+(fmtD(wo.dueDate)||'—')+'</span>'
+              +'</div>'
+            +'</div>'
+            +ctrl
+            +'</div>';
+        }).join('');
+      }
+      detail+='</div>';
+    }
+  }
+
+  /* ── ASSEMBLE ── */
+  el.innerHTML='<div class="lsv-wrap">'
+   +'<div class="lsv-box">'+s+'</div>'
+   +leg+detail
+   +'</div>';
+
+  /* ── ATTACH CLICK HANDLERS (no inline onclick needed) ── */
+  el.querySelectorAll('[data-zid]').forEach(function(g){
+    g.addEventListener('click',function(){
+      selectedZone=(selectedZone===this.getAttribute('data-zid')?null:this.getAttribute('data-zid'));
+      renderLayout();
+    });
+  });
 }
 
 /* ── HELPERS ── */
