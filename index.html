@@ -25,8 +25,6 @@
 body{background:var(--bg);color:var(--hi);font-family:var(--font);font-size:14px;line-height:1.55;min-height:100vh}
 body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(6,182,212,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(6,182,212,.025) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0}
 ::-webkit-scrollbar{width:4px;height:4px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--b2);border-radius:2px}
-
-/* LOADING */
 #ld{position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px}
 .ld-logo{font-family:var(--mono);font-size:11px;color:var(--cyan);letter-spacing:3px;display:flex;align-items:center;gap:8px}
 .ld-logo::before,.ld-logo::after{content:'';flex:1;height:1px;max-width:40px}
@@ -35,11 +33,7 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 .ld-ring{width:44px;height:44px;border:2px solid var(--b2);border-top-color:var(--cyan);border-radius:50%;animation:spin .8s linear infinite}
 .ld-txt{font-family:var(--mono);font-size:10px;color:var(--lo);letter-spacing:2px}
 @keyframes spin{to{transform:rotate(360deg)}}
-
-/* SHELL */
 #shell{display:flex;min-height:100vh;position:relative;z-index:1}
-
-/* SIDEBAR */
 #sidebar{width:var(--sw);background:var(--bg2);display:flex;flex-direction:column;position:fixed;top:0;left:0;height:100vh;z-index:100;border-right:1px solid var(--b1);overflow:hidden}
 #sidebar::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--cyan-hi),var(--blue) 50%,var(--cyan));box-shadow:0 0 12px rgba(6,182,212,.5)}
 #sb-logo{padding:20px 20px 18px 22px;border-bottom:1px solid var(--b1);background:linear-gradient(135deg,rgba(6,182,212,.06),transparent)}
@@ -53,13 +47,8 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 .kpi-row::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px}
 .kpi-row:hover,.kpi-row.active{border-color:var(--b2);background:var(--s2)}
 .kpi-row.active::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,182,212,.06),transparent);pointer-events:none}
-.kpi-row.k-all::before{background:var(--mid)}
-.kpi-row.k-pend::before{background:var(--amber)}
-.kpi-row.k-prog::before{background:var(--blue)}
-.kpi-row.k-done::before{background:var(--green)}
-.kpi-row.k-hold::before{background:var(--red)}
-.kpi-lbl{font-size:11px;color:var(--mid)}
-.kpi-val{font-family:var(--mono);font-size:20px;font-weight:600;line-height:1}
+.kpi-row.k-all::before{background:var(--mid)}.kpi-row.k-pend::before{background:var(--amber)}.kpi-row.k-prog::before{background:var(--blue)}.kpi-row.k-done::before{background:var(--green)}.kpi-row.k-hold::before{background:var(--red)}
+.kpi-lbl{font-size:11px;color:var(--mid)}.kpi-val{font-family:var(--mono);font-size:20px;font-weight:600;line-height:1}
 .k-all .kpi-val{color:var(--hi)}.k-pend .kpi-val{color:var(--amb-hi)}.k-prog .kpi-val{color:var(--blu-hi)}.k-done .kpi-val{color:var(--grn-hi)}.k-hold .kpi-val{color:var(--red-hi)}
 #sb-nav{flex:1;overflow-y:auto;padding:10px 10px 20px}
 #sb-nav::-webkit-scrollbar{width:3px}
@@ -70,13 +59,10 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 .nav-ico{font-size:13px;width:18px;text-align:center;flex-shrink:0}
 .nav-ct{margin-left:auto;font-family:var(--mono);font-size:9px;background:var(--s3);border:1px solid var(--b2);border-radius:10px;padding:1px 7px;color:var(--lo)}
 .nav-item.active .nav-ct{background:var(--cyan-lo);border-color:var(--cyan-bd);color:var(--cyan)}
-
-/* TOPBAR */
 #main{margin-left:var(--sw);flex:1;display:flex;flex-direction:column}
 #topbar{height:var(--th);background:var(--bg2);border-bottom:1px solid var(--b1);padding:0 22px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:50}
 .tb-bc{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--lo);font-family:var(--mono);white-space:nowrap}
-.tb-sep{opacity:.3}
-.tb-cur{color:var(--hi);font-weight:500}
+.tb-sep{opacity:.3}.tb-cur{color:var(--hi);font-weight:500}
 .sw{display:flex;align-items:center;gap:8px;background:var(--s1);border:1px solid var(--b1);border-radius:24px;padding:7px 14px;transition:all .2s;flex:1;max-width:280px}
 .sw:focus-within{border-color:var(--cyan-bd);box-shadow:0 0 0 3px var(--cyan-lo)}
 .sw svg{color:var(--lo);flex-shrink:0}
@@ -92,11 +78,7 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 .badge{display:none;align-items:center;gap:5px;padding:3px 10px;border-radius:3px;font-family:var(--mono);font-size:9px;letter-spacing:1px;font-weight:600}
 .badge-pub{background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.25);color:var(--grn-hi)}
 .badge-adm{background:var(--cyan-lo);border:1px solid var(--cyan-bd);color:var(--cyan-hi)}
-
-/* CONTENT */
 #content{padding:20px 22px 60px;flex:1}
-
-/* FILTER CHIPS */
 .filter-bar{display:flex;align-items:center;flex-wrap:wrap;gap:6px;padding:10px 14px;background:var(--s1);border:1px solid var(--b1);border-radius:var(--r);margin-bottom:10px}
 .fchip{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600;font-family:var(--mono)}
 .fc-area{background:var(--cyan-lo);color:var(--cyan-hi);border:1px solid var(--cyan-bd)}
@@ -105,8 +87,6 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 .fc-q{background:var(--grn-lo);color:var(--grn-hi);border:1px solid var(--grn-bd)}
 .fx{background:transparent;border:none;color:inherit;cursor:pointer;font-size:11px;padding:0 2px;opacity:.7;line-height:1}.fx:hover{opacity:1}
 .fcount{margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--lo)}
-
-/* WO ROW */
 .wo-row{background:var(--s1);border:1px solid var(--b1);border-radius:var(--r);margin-bottom:7px;display:flex;align-items:stretch;overflow:hidden;transition:border-color .2s,box-shadow .2s}
 .wo-row:hover{border-color:var(--b2);box-shadow:0 2px 16px rgba(0,0,0,.3)}
 .wo-stripe{width:4px;flex-shrink:0}
@@ -143,12 +123,7 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 .ra{width:28px;height:28px;border:1px solid var(--b1);border-radius:var(--r2);background:transparent;color:var(--lo);display:flex;align-items:center;justify-content:center;font-size:12px;cursor:pointer;transition:all .15s}
 .ra:hover{background:var(--s3);border-color:var(--b2);color:var(--hi)}
 .ra.del:hover{background:var(--red-lo);border-color:var(--red-bd);color:var(--red-hi)}
-.empty{text-align:center;padding:56px 20px;color:var(--lo)}
-.e-ico{font-size:36px;margin-bottom:12px;opacity:.5}
-.e-txt{font-size:13px;font-family:var(--mono);margin-bottom:4px;color:var(--mid)}
-.e-sub{font-size:11px}
-
-/* MODALS */
+.empty{text-align:center;padding:56px 20px;color:var(--lo)}.e-ico{font-size:36px;margin-bottom:12px;opacity:.5}.e-txt{font-size:13px;font-family:var(--mono);margin-bottom:4px;color:var(--mid)}.e-sub{font-size:11px}
 .mbg{display:none;position:fixed;inset:0;background:rgba(2,8,16,.85);backdrop-filter:blur(8px);z-index:300;align-items:center;justify-content:center;padding:24px}
 .mbg.open{display:flex}
 .mbox{background:var(--s1);border:1px solid var(--b2);border-radius:8px;box-shadow:0 32px 80px rgba(0,0,0,.6);animation:mIn .22s ease;overflow:hidden;width:100%}
@@ -157,35 +132,25 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 .mhd{display:flex;align-items:center;gap:12px;padding:18px 22px;border-bottom:1px solid var(--b1);background:linear-gradient(90deg,rgba(6,182,212,.05),transparent)}
 .mtag{font-family:var(--mono);font-size:9px;padding:3px 9px;border-radius:var(--r2);letter-spacing:1.5px;font-weight:600}
 .mtag-cy{background:var(--cyan);color:#042030}.mtag-bl{background:var(--blue);color:#fff}.mtag-rd{background:var(--red);color:#fff}
-.mttl{font-size:15px;font-weight:700;color:var(--hi);flex:1}
-.msub{font-size:11px;color:var(--lo);margin-top:1px}
+.mttl{font-size:15px;font-weight:700;color:var(--hi);flex:1}.msub{font-size:11px;color:var(--lo);margin-top:1px}
 .mx{width:26px;height:26px;border-radius:50%;border:1px solid var(--b2);background:transparent;color:var(--lo);cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;transition:all .15s}
 .mx:hover{background:var(--red-lo);color:var(--red-hi);border-color:var(--red-bd)}
 .mbody{padding:20px 22px}
 .mft{display:flex;justify-content:flex-end;gap:8px;padding:14px 22px;border-top:1px solid var(--b1);background:rgba(0,0,0,.2)}
-.fg{display:grid;grid-template-columns:1fr 1fr;gap:13px}
-.fg1{display:flex;flex-direction:column;gap:5px}
-.fg1.full{grid-column:1/-1}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:13px}.fg1{display:flex;flex-direction:column;gap:5px}.fg1.full{grid-column:1/-1}
 .flbl{font-family:var(--mono);font-size:9px;color:var(--cyan);letter-spacing:1.8px;text-transform:uppercase;font-weight:600}
 .fi,.fs,.fta{background:var(--s2);border:1px solid var(--b1);border-radius:var(--r);color:var(--hi);font-family:var(--font);font-size:13px;padding:9px 11px;outline:none;transition:border-color .2s,box-shadow .2s;width:100%}
 .fi:focus,.fs:focus,.fta:focus{border-color:var(--cyan-bd);box-shadow:0 0 0 3px var(--cyan-lo);background:var(--s3)}
-.fta{resize:vertical;min-height:72px;line-height:1.6}
-.fs{cursor:pointer}.fs option{background:var(--s2)}
+.fta{resize:vertical;min-height:72px;line-height:1.6}.fs{cursor:pointer}.fs option{background:var(--s2)}
 .tab-strip{display:flex;gap:4px;background:var(--bg);border-radius:var(--r);padding:3px;margin-bottom:14px;border:1px solid var(--b1)}
 .tab-btn{padding:6px 16px;border:none;border-radius:var(--r2);font-size:12px;cursor:pointer;background:transparent;color:var(--mid);font-family:var(--font);font-weight:500;transition:all .2s}
 .tab-btn.active{background:var(--s2);color:var(--cyan-hi);border:1px solid var(--cyan-bd)}
-.set-item{display:flex;align-items:center;gap:8px;padding:9px 0;border-bottom:1px solid var(--b1)}
-.set-item:last-child{border-bottom:none}
+.set-item{display:flex;align-items:center;gap:8px;padding:9px 0;border-bottom:1px solid var(--b1)}.set-item:last-child{border-bottom:none}
 .set-dot{width:6px;height:6px;background:var(--cyan);border-radius:50%;flex-shrink:0;box-shadow:0 0 5px var(--cyan)}
-.set-txt{flex:1;font-size:13px;color:var(--hi)}
-.set-acts{display:flex;gap:5px}
+.set-txt{flex:1;font-size:13px;color:var(--hi)}.set-acts{display:flex;gap:5px}
 .s-btn{padding:4px 10px;border-radius:var(--r2);font-size:11px;cursor:pointer;border:1px solid;font-family:var(--font);transition:all .15s;font-weight:500}
-.s-ed{background:var(--blu-lo);border-color:var(--blu-bd);color:var(--blu-hi)}
-.s-dl{background:var(--red-lo);border-color:var(--red-bd);color:var(--red-hi)}
-.s-sv{background:var(--grn-lo);border-color:var(--grn-bd);color:var(--grn-hi)}
-.s-cx{background:var(--s3);border-color:var(--b2);color:var(--mid)}
+.s-ed{background:var(--blu-lo);border-color:var(--blu-bd);color:var(--blu-hi)}.s-dl{background:var(--red-lo);border-color:var(--red-bd);color:var(--red-hi)}.s-sv{background:var(--grn-lo);border-color:var(--grn-bd);color:var(--grn-hi)}.s-cx{background:var(--s3);border-color:var(--b2);color:var(--mid)}
 .add-row{display:flex;gap:8px;margin-top:14px;padding-top:14px;border-top:1px solid var(--b1)}
-/* QR TAG */
 .tag-box{border:1px solid var(--b2);border-radius:6px;padding:15px;background:var(--bg);margin-bottom:14px;position:relative;overflow:hidden}
 .tag-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--cyan),var(--blue))}
 .tag-hd{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:10px}
@@ -197,46 +162,28 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 .qr-lg img{border-radius:8px;background:#fff;padding:6px;border:1px solid var(--b2)}
 .url-block{background:var(--bg);border:1px solid var(--cyan-bd);border-radius:var(--r);padding:10px 12px;margin-bottom:12px}
 .url-lbl{font-family:var(--mono);font-size:9px;color:var(--cyan);letter-spacing:1.5px;margin-bottom:4px;text-transform:uppercase}
-.url-val{font-size:11px;color:var(--blu-hi);word-break:break-all;text-decoration:none;font-family:var(--mono)}
-.url-val:hover{color:var(--cyan-hi);text-decoration:underline}
-/* CONFIRM */
-.c-ico{font-size:28px;margin:8px 0 10px}
-.c-ttl{font-size:15px;font-weight:700;margin-bottom:5px}
-.c-sub{font-size:12px;color:var(--mid);margin-bottom:20px}
-.c-row{display:flex;gap:8px;justify-content:center}
-/* VIEWER */
+.url-val{font-size:11px;color:var(--blu-hi);word-break:break-all;text-decoration:none;font-family:var(--mono)}.url-val:hover{color:var(--cyan-hi);text-decoration:underline}
+.c-ico{font-size:28px;margin:8px 0 10px}.c-ttl{font-size:15px;font-weight:700;margin-bottom:5px}.c-sub{font-size:12px;color:var(--mid);margin-bottom:20px}.c-row{display:flex;gap:8px;justify-content:center}
 #viewer{display:none;min-height:100vh;background:var(--bg)}
 .vw-bar{height:4px}
-.vw-bar.st-pending{background:linear-gradient(90deg,var(--amber),var(--amb-hi))}
-.vw-bar.st-inProgress{background:linear-gradient(90deg,var(--blue),var(--blu-hi))}
-.vw-bar.st-done{background:linear-gradient(90deg,var(--green),var(--grn-hi))}
-.vw-bar.st-hold{background:linear-gradient(90deg,var(--red),var(--red-hi))}
+.vw-bar.st-pending{background:linear-gradient(90deg,var(--amber),var(--amb-hi))}.vw-bar.st-inProgress{background:linear-gradient(90deg,var(--blue),var(--blu-hi))}.vw-bar.st-done{background:linear-gradient(90deg,var(--green),var(--grn-hi))}.vw-bar.st-hold{background:linear-gradient(90deg,var(--red),var(--red-hi))}
 .vw-nav{background:var(--bg2);padding:14px 18px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--b1)}
 .vw-ico{width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,var(--cyan),var(--blue));display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11px;font-weight:700;color:#042030;flex-shrink:0}
-.vw-title{font-size:14px;font-weight:700;color:var(--hi)}
-.vw-sub{font-size:10px;color:var(--lo);font-family:var(--mono);letter-spacing:1px;margin-top:1px}
+.vw-title{font-size:14px;font-weight:700;color:var(--hi)}.vw-sub{font-size:10px;color:var(--lo);font-family:var(--mono);letter-spacing:1px;margin-top:1px}
 .vw-body{max-width:500px;margin:0 auto;padding:16px 18px 48px}
 .vw-wono{font-family:var(--mono);font-size:11px;color:var(--cyan);letter-spacing:.5px;margin-top:16px;margin-bottom:4px}
 .vw-name{font-size:22px;font-weight:800;color:var(--hi);line-height:1.25;margin-bottom:12px}
 .vw-badges{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px}
 .vw-card{background:var(--s1);border:1px solid var(--b1);border-radius:6px;padding:15px 16px;margin-bottom:10px}
 .vw-card-lbl{font-family:var(--mono);font-size:9px;color:var(--lo);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;font-weight:600}
-.vw-row{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid var(--b1)}
-.vw-row:last-child{border-bottom:none;padding-bottom:0}
+.vw-row{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid var(--b1)}.vw-row:last-child{border-bottom:none;padding-bottom:0}
 .vw-rio{width:28px;height:28px;border-radius:6px;background:var(--cyan-lo);border:1px solid var(--cyan-bd);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;margin-top:1px}
-.vw-lbl{font-size:10px;color:var(--lo);text-transform:uppercase;letter-spacing:.07em;font-family:var(--mono);margin-bottom:2px}
-.vw-val{font-size:14px;font-weight:600;color:var(--hi)}
-.vw-det{font-size:13px;color:var(--mid);line-height:1.75}
-/* MOBILE */
+.vw-lbl{font-size:10px;color:var(--lo);text-transform:uppercase;letter-spacing:.07em;font-family:var(--mono);margin-bottom:2px}.vw-val{font-size:14px;font-weight:600;color:var(--hi)}.vw-det{font-size:13px;color:var(--mid);line-height:1.75}
 #ham{display:none;width:36px;height:36px;border:1px solid var(--b2);border-radius:var(--r);background:transparent;color:var(--hi);font-size:18px;cursor:pointer;align-items:center;justify-content:center;flex-shrink:0}
-#sbo{display:none;position:fixed;inset:0;background:rgba(2,8,16,.8);z-index:99}
-#sbo.open{display:block}
-.fab{position:fixed;bottom:22px;right:22px;width:52px;height:52px;border-radius:50%;background:var(--cyan);border:none;color:#042030;font-size:22px;font-weight:700;cursor:pointer;box-shadow:0 6px 24px rgba(6,182,212,.45);display:none;align-items:center;justify-content:center;z-index:80;transition:all .2s}
-.fab:hover{background:var(--cyan-hi);transform:scale(1.08)}
+#sbo{display:none;position:fixed;inset:0;background:rgba(2,8,16,.8);z-index:99}#sbo.open{display:block}
+.fab{position:fixed;bottom:22px;right:22px;width:52px;height:52px;border-radius:50%;background:var(--cyan);border:none;color:#042030;font-size:22px;font-weight:700;cursor:pointer;box-shadow:0 6px 24px rgba(6,182,212,.45);display:none;align-items:center;justify-content:center;z-index:80;transition:all .2s}.fab:hover{background:var(--cyan-hi);transform:scale(1.08)}
 #toast{position:fixed;bottom:22px;right:22px;background:var(--s2);color:var(--hi);font-size:12px;padding:10px 16px;border-radius:var(--r);border:1px solid var(--b2);transform:translateY(60px);opacity:0;transition:all .3s cubic-bezier(.34,1.56,.64,1);z-index:999;display:flex;align-items:center;gap:8px;box-shadow:0 8px 32px rgba(0,0,0,.4);min-width:200px}
-#toast.show{transform:translateY(0);opacity:1}
-.tok{color:var(--grn-hi);font-size:15px;flex-shrink:0}
-.twn{color:var(--amb-hi);font-size:15px;flex-shrink:0}
+#toast.show{transform:translateY(0);opacity:1}.tok{color:var(--grn-hi);font-size:15px;flex-shrink:0}.twn{color:var(--amb-hi);font-size:15px;flex-shrink:0}
 @media(max-width:768px){
   #shell{flex-direction:column}#main{margin-left:0}
   #sidebar{width:280px;transform:translateX(-110%);transition:transform .28s cubic-bezier(.4,0,.2,1)}
@@ -245,62 +192,43 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
   .sw{flex:1}#si{width:100%}#content{padding:14px 12px 56px}
   .wo-ctrl,.wo-acts{display:none}
   .fg{grid-template-columns:1fr}.fg1.full{grid-column:1}
-  .mbg{align-items:flex-end;padding:0}
-  .mbox{border-radius:8px 8px 0 0;max-width:100%!important;max-height:92vh}
+  .mbg{align-items:flex-end;padding:0}.mbox{border-radius:8px 8px 0 0;max-width:100%!important;max-height:92vh}
   #toast{left:12px;right:12px;bottom:70px}.fab{display:flex}
 }
 @media print{
   #shell,#topbar,body>*:not(#m-tag){display:none!important}
-  .mbg{position:static;background:none;padding:0}
-  .mbox{box-shadow:none;border:none;max-width:100%!important}
-  .mhd,.mft,.url-block,#print-btn,.qr-lg,
-  [data-noprint]{display:none!important}
+  .mbg{position:static;background:none;padding:0}.mbox{box-shadow:none;border:none;max-width:100%!important}
+  .mhd,.mft,.url-block,#print-btn,.qr-lg,[data-noprint]{display:none!important}
   .tag-box{border:2px dashed #999;background:#fff;color:#000;padding:22px}
-  .tag-wono{color:#000!important;font-size:16px!important;letter-spacing:1px}
-  .tag-job{color:#000!important;font-size:26px!important;font-weight:800!important;max-width:none!important}
-  .tag-ft{color:#000!important;font-size:15px!important;line-height:1.8!important}
-  .tag-ft span{color:#000!important;font-size:15px!important}
-  .urg{font-size:13px!important;padding:4px 14px!important}
-  .tag-qr-wrap img{width:160px!important;height:160px!important}
+  .tag-wono{color:#000!important;font-size:16px!important;letter-spacing:1px}.tag-job{color:#000!important;font-size:26px!important;font-weight:800!important;max-width:none!important}
+  .tag-ft{color:#000!important;font-size:15px!important;line-height:1.8!important}.tag-ft span{color:#000!important;font-size:15px!important}
+  .urg{font-size:13px!important;padding:4px 14px!important}.tag-qr-wrap img{width:160px!important;height:160px!important}
   body{background:#fff}
 }
-
-/* ═══ LAYOUT VIEW ═══ */
 .lsv-wrap{display:flex;flex-direction:column;gap:14px}
-.lsv-box{background:#030d17;border:1px solid var(--b2);border-radius:8px;overflow:hidden;position:relative}
-.lsv-box svg{width:100%;height:auto;display:block}
-.zone-g{cursor:pointer}
-.zone-g rect,.zone-g polygon{transition:opacity .15s,stroke-width .15s}
-.zone-g:hover rect{opacity:.75!important}
-.zone-g.sel rect{stroke-width:2.5!important}
+.lsv-box{background:#030d17;border:1px solid var(--b2);border-radius:8px;overflow:hidden;position:relative}.lsv-box svg{width:100%;height:auto;display:block}
+.zone-g{cursor:pointer}.zone-g rect,.zone-g polygon{transition:opacity .15s,stroke-width .15s}.zone-g:hover rect{opacity:.75!important}.zone-g.sel rect{stroke-width:2.5!important}
 .zdp{background:var(--s1);border:1px solid var(--b2);border-radius:8px;padding:16px;animation:mIn .2s ease}
 .zdp-hd{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--b1)}
 .zdp-ico{width:32px;height:32px;border-radius:6px;background:var(--cyan-lo);border:1px solid var(--cyan-bd);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
-.zdp-name{font-size:14px;font-weight:700;color:var(--hi);flex:1}
-.zdp-badge{font-family:var(--mono);font-size:10px;color:var(--lo);background:var(--s3);border:1px solid var(--b2);padding:2px 10px;border-radius:10px}
-.zdp-x{background:transparent;border:1px solid var(--b2);color:var(--lo);border-radius:50%;width:26px;height:26px;cursor:pointer;font-size:11px;display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0}
-.zdp-x:hover{background:var(--red-lo);color:var(--red-hi);border-color:var(--red-bd)}
+.zdp-name{font-size:14px;font-weight:700;color:var(--hi);flex:1}.zdp-badge{font-family:var(--mono);font-size:10px;color:var(--lo);background:var(--s3);border:1px solid var(--b2);padding:2px 10px;border-radius:10px}
+.zdp-x{background:transparent;border:1px solid var(--b2);color:var(--lo);border-radius:50%;width:26px;height:26px;cursor:pointer;font-size:11px;display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0}.zdp-x:hover{background:var(--red-lo);color:var(--red-hi);border-color:var(--red-bd)}
 .zdp-empty{text-align:center;padding:28px 16px;color:var(--lo);font-family:var(--mono);font-size:11px;letter-spacing:.5px}
-.layout-legend{display:flex;flex-wrap:wrap;gap:8px}
-.leg-item{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--mid);font-family:var(--mono);letter-spacing:.3px}
-.leg-box{width:10px;height:10px;border-radius:2px;flex-shrink:0}
+.layout-legend{display:flex;flex-wrap:wrap;gap:8px}.leg-item{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--mid);font-family:var(--mono);letter-spacing:.3px}.leg-box{width:10px;height:10px;border-radius:2px;flex-shrink:0}
 .lsv-tip{font-family:var(--mono);font-size:10px;color:var(--lo);letter-spacing:.5px;text-align:right}
 </style>
 </head>
 <body>
-
 <div id="ld">
   <div class="ld-logo">WORKSHOP WORK ORDER SYSTEM</div>
   <div class="ld-ring"></div>
   <div class="ld-txt">INITIALIZING</div>
 </div>
-
 <div id="viewer">
   <div class="vw-bar" id="vw-bar"></div>
   <div class="vw-nav"><div class="vw-ico">WO</div><div><div class="vw-title">Workshop Work Order</div><div class="vw-sub">LIVE DATA · REALTIME</div></div></div>
   <div class="vw-body" id="vw-body"><div class="empty"><div class="e-ico">⏳</div><div class="e-txt">LOADING...</div></div></div>
 </div>
-
 <div id="shell">
 <div id="sbo" onclick="closeSB()"></div>
 <div id="sidebar">
@@ -318,16 +246,13 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
   </div>
   <div id="sb-nav">
     <div class="nav-sec">// Views</div>
-    <button class="nav-item" id="nav-layout" onclick="showLayoutView()">
-      <span class="nav-ico">🏭</span>Workshop Layout<span class="nav-ct">MAP</span>
-    </button>
+    <button class="nav-item" id="nav-layout" onclick="showLayoutView()"><span class="nav-ico">🏭</span>Workshop Layout<span class="nav-ct">MAP</span></button>
     <div class="nav-sec">// พื้นที่ / Area</div>
     <div id="nav-areas"></div>
     <div class="nav-sec">// ประเภทงาน / Job Type</div>
     <div id="nav-types"></div>
   </div>
 </div>
-
 <div id="main">
   <div id="topbar">
     <button id="ham" onclick="toggleSB()">☰</button>
@@ -340,8 +265,7 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
       <div class="badge badge-pub" id="bdg-pub">⬤ PUBLIC</div>
       <div class="badge badge-adm" id="bdg-adm">⬤ ADMIN</div>
       <button class="btn btn-cyan" id="btn-add" onclick="openAdd()" style="display:none">
-        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        NEW WO
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>NEW WO
       </button>
       <button class="btn-icon" id="btn-set" onclick="openSet()" title="Settings" style="display:none">
         <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33A1.65 1.65 0 0 0 14 18.35V19a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 17.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 13a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 7a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 2.68a1.65 1.65 0 0 0 1-1.51V1a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
@@ -353,10 +277,7 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
   <div id="content"></div>
 </div>
 </div>
-
 <button class="fab" id="fab" onclick="openAdd()">+</button>
-
-<!-- LOGIN MODAL -->
 <div id="m-login" class="mbg" onclick="bgX(event,'m-login')">
 <div class="mbox md">
   <div class="mhd"><span class="mtag mtag-cy">AUTH</span><div><div class="mttl">Admin Access</div><div class="msub">Enter administrator password</div></div><button class="mx" onclick="closeLogin()">✕</button></div>
@@ -367,8 +288,6 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
   <div class="mft"><button class="btn btn-ghost" onclick="closeLogin()">Cancel</button><button class="btn btn-cyan" onclick="doLogin()">AUTHENTICATE</button></div>
 </div>
 </div>
-
-<!-- EDIT MODAL -->
 <div id="m-edit" class="mbg" onclick="bgX(event,'m-edit')">
 <div class="mbox lg">
   <div class="mhd"><span class="mtag mtag-cy" id="me-tag">NEW WO</span><div><div class="mttl" id="me-ttl">Create Work Order</div><div class="msub" id="me-sub">Fill in all required fields</div></div><button class="mx" onclick="closeEdit()">✕</button></div>
@@ -390,17 +309,13 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
           <option value="hold">⛔ On Hold</option>
         </select>
       </div>
-      <div class="fg1"><label class="flbl">📌 Workshop Location</label>
-        <select class="fs" id="f-loc"></select>
-      </div>
+      <div class="fg1"><label class="flbl">📌 Workshop Location</label><select class="fs" id="f-loc"></select></div>
       <div class="fg1 full"><label class="flbl">Details / Notes</label><textarea class="fta" id="f-det" placeholder="รายละเอียดงาน..."></textarea></div>
     </div>
   </div>
   <div class="mft"><button class="btn btn-ghost" onclick="closeEdit()">Cancel</button><button class="btn btn-cyan" id="save-btn" onclick="saveWO()">SAVE WORK ORDER</button></div>
 </div>
 </div>
-
-<!-- QR TAG MODAL -->
 <div id="m-tag" class="mbg" onclick="bgX(event,'m-tag')">
 <div class="mbox lg">
   <div class="mhd"><span class="mtag mtag-cy">QR TAG</span><div><div class="mttl">Work Order Tag</div><div class="msub">Scan QR to view live status</div></div><button class="mx" onclick="closeTag()">✕</button></div>
@@ -408,8 +323,6 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
   <div class="mft"><button class="btn btn-ghost" onclick="closeTag()">Close</button><button class="btn btn-cyan" id="print-btn" onclick="window.print()">🖨 Print Tag</button></div>
 </div>
 </div>
-
-<!-- SETTINGS MODAL -->
 <div id="m-set" class="mbg" onclick="bgX(event,'m-set')">
 <div class="mbox lg">
   <div class="mhd"><span class="mtag mtag-bl">CONFIG</span><div><div class="mttl">System Settings</div><div class="msub">Manage areas and job types</div></div><button class="mx" onclick="closeSet()">✕</button></div>
@@ -424,8 +337,6 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
   </div>
 </div>
 </div>
-
-<!-- DELETE CONFIRM -->
 <div id="m-del" class="mbg" onclick="bgX(event,'m-del')">
 <div class="mbox sm">
   <div class="mbody" style="padding:28px 22px">
@@ -436,28 +347,19 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
   </div>
 </div>
 </div>
-
 <div id="toast"></div>
-
 <script>
-/* ══════════════════════════════════════
-   FIREBASE CONFIG
-══════════════════════════════════════ */
-const FB_CFG = {
+const FB_CFG={
   apiKey:"AIzaSyAad7GNxjfz3nzPeFtBkhB16fO54QAKmOw",
   authDomain:"fab-checklist-workshop.firebaseapp.com",
   databaseURL:"https://fab-checklist-workshop-default-rtdb.firebaseio.com",
   projectId:"fab-checklist-workshop",
   storageBucket:"fab-checklist-workshop.firebasestorage.app",
   messagingSenderId:"80900940748",
-  appId:"1:80900940748:web:0ab64b61d5bcc200fdf369"
+  appId:"1:80900940748:web:3cb6352b7c5e0f59fdf369"
 };
-
-/* ── Hide loading screen FIRST before anything else ── */
-function hideLd(){ var l=document.getElementById('ld'); if(l) l.style.display='none'; }
+function hideLd(){var l=document.getElementById('ld');if(l)l.style.display='none';}
 hideLd();
-
-/* ── Init Firebase ── */
 var db,WO_REF,ST_REF;
 try{
   firebase.initializeApp(FB_CFG);
@@ -466,33 +368,25 @@ try{
   ST_REF=db.ref('workorders/settings');
 }catch(e){
   console.error('Firebase init error:',e);
-  document.getElementById('content').innerHTML=
-    '<div class="empty"><div class="e-ico">⚠</div><div class="e-txt">FIREBASE ERROR</div>'+
-    '<div class="e-sub">ไม่สามารถเชื่อมต่อ Firebase ได้<br>ตรวจสอบการเชื่อมต่ออินเตอร์เน็ต</div>'+
-    '<button class="btn btn-ghost" onclick="location.reload()" style="margin:14px auto 0">🔄 Reload</button></div>';
+  document.getElementById('content').innerHTML='<div class="empty"><div class="e-ico">⚠</div><div class="e-txt">FIREBASE ERROR</div><div class="e-sub">ไม่สามารถเชื่อมต่อ Firebase ได้<br>ตรวจสอบการเชื่อมต่ออินเตอร์เน็ต</div><button class="btn btn-ghost" onclick="location.reload()" style="margin:14px auto 0">🔄 Reload</button></div>';
 }
-
-/* ══════════════════════════════════════
-   CONSTANTS & STATE
-══════════════════════════════════════ */
 const DEF_AREAS=['Production A','Production B','Maintenance','QC / ตรวจสอบ','Warehouse','Engineering'];
 const DEF_TYPES=['งานเชื่อม','งานกลึง','งานประกอบ','งานซ่อมแก้ไข','อื่นๆ'];
-/* Workshop layout zones — linked to WO location field */
 var LAYOUT_ZONES=[
-  {id:'z1', name:'Zone 1',          label:'ZONE 1',      rects:[{x:2,  y:182,w:112,h:101}],                              fill:'rgba(16,185,129,.18)', stroke:'#34d399',tx:58, ty:233},
-  {id:'z2', name:'Zone 2',          label:'ZONE 2',      rects:[{x:352,y:286,w:190,h:140}],                              fill:'rgba(6,182,212,.18)',  stroke:'#22d3ee',tx:447,ty:356},
-  {id:'z3', name:'Zone 3',          label:'ZONE 3',      rects:[{x:546,y:286,w:156,h:140}],                              fill:'rgba(139,92,246,.2)', stroke:'#a78bfa',tx:624,ty:356},
-  {id:'z4', name:'Zone 4',          label:'ZONE 4',      rects:[{x:448,y:44, w:178,h:134}],                              fill:'rgba(245,158,11,.18)',stroke:'#fbbf24',tx:537,ty:111},
-  {id:'z5', name:'Zone 5',          label:'ZONE 5',      rects:[{x:704,y:44, w:192,h:134}],                              fill:'rgba(139,92,246,.2)', stroke:'#a78bfa',tx:800,ty:111},
-  {id:'mac',name:'Machining Area',  label:'MACHINING',   rects:[{x:118,y:182,w:228,h:101},{x:2,  y:286,w:346,h:140}],   fill:'rgba(234,179,8,.15)', stroke:'#fde047',tx:232,ty:233},
-  {id:'fab',name:'Fabrication Area',label:'FABRICATION', rects:[{x:446,y:182,w:450,h:101},{x:706,y:286,w:190,h:140}],   fill:'rgba(249,115,22,.15)',stroke:'#fb923c',tx:671,ty:233},
-  {id:'sto',name:'Storage',         label:'STORAGE',     rects:[{x:118,y:44, w:232,h:134}],                              fill:'rgba(100,116,139,.2)',stroke:'#94a3b8',tx:234,ty:111},
+  {id:'z1',name:'Zone 1',label:'ZONE 1',rects:[{x:2,y:182,w:112,h:101}],fill:'rgba(16,185,129,.18)',stroke:'#34d399',tx:58,ty:233},
+  {id:'z2',name:'Zone 2',label:'ZONE 2',rects:[{x:352,y:286,w:190,h:140}],fill:'rgba(6,182,212,.18)',stroke:'#22d3ee',tx:447,ty:356},
+  {id:'z3',name:'Zone 3',label:'ZONE 3',rects:[{x:546,y:286,w:156,h:140}],fill:'rgba(139,92,246,.2)',stroke:'#a78bfa',tx:624,ty:356},
+  {id:'z4',name:'Zone 4',label:'ZONE 4',rects:[{x:448,y:44,w:178,h:134}],fill:'rgba(245,158,11,.18)',stroke:'#fbbf24',tx:537,ty:111},
+  {id:'z5',name:'Zone 5',label:'ZONE 5',rects:[{x:704,y:44,w:192,h:134}],fill:'rgba(139,92,246,.2)',stroke:'#a78bfa',tx:800,ty:111},
+  {id:'mac',name:'Machining Area',label:'MACHINING',rects:[{x:118,y:182,w:228,h:101},{x:2,y:286,w:346,h:140}],fill:'rgba(234,179,8,.15)',stroke:'#fde047',tx:232,ty:233},
+  {id:'fab',name:'Fabrication Area',label:'FABRICATION',rects:[{x:446,y:182,w:450,h:101},{x:706,y:286,w:190,h:140}],fill:'rgba(249,115,22,.15)',stroke:'#fb923c',tx:671,ty:233},
+  {id:'sto',name:'Storage',label:'STORAGE',rects:[{x:118,y:44,w:232,h:134}],fill:'rgba(100,116,139,.2)',stroke:'#94a3b8',tx:234,ty:111},
 ];
 const ST={
-  pending:   {label:'⏳ รอดำเนินการ',  short:'PENDING',    act:'act-p'},
+  pending:{label:'⏳ รอดำเนินการ',short:'PENDING',act:'act-p'},
   inProgress:{label:'⚙ กำลังดำเนินการ',short:'IN PROGRESS',act:'act-i'},
-  done:      {label:'✓ เสร็จสิ้น',      short:'DONE',       act:'act-d'},
-  hold:      {label:'⛔ On Hold',        short:'ON HOLD',    act:'act-h'},
+  done:{label:'✓ เสร็จสิ้น',short:'DONE',act:'act-d'},
+  hold:{label:'⛔ On Hold',short:'ON HOLD',act:'act-h'},
 };
 const VW_ROWS=[
   {ico:'📌',lbl:'Workshop Location',key:'location'},
@@ -503,28 +397,13 @@ const VW_ROWS=[
   {ico:'👤',lbl:'Requested By',key:'requestedBy'},
   {ico:'🚦',lbl:'Priority',key:'priority'},
 ];
-/* Password: workshop2024  — SHA256("workshop2024WOS_v2_SALT") */
 const PW_HASH='6895b9ae20a5198183073f46d0b4a70342a13d12add16250511737118b5f63fd';
-
 var wos=[],areas=[...DEF_AREAS],jobTypes=[...DEF_TYPES];
 var isAdmin=false,filter='all',sq='',sTab='areas',editKey=null,delKey=null,setEditIdx=null;
 var viewMode='list',selectedZone=null;
-
-/* ══════════════════════════════════════
-   ROUTER
-══════════════════════════════════════ */
 var WO_ID=new URLSearchParams(location.search).get('wo');
-if(WO_ID){
-  document.getElementById('shell').style.display='none';
-  document.getElementById('viewer').style.display='block';
-  startViewer();
-}else{
-  startDash();
-}
-
-/* ══════════════════════════════════════
-   VIEWER (QR scan)
-══════════════════════════════════════ */
+if(WO_ID){document.getElementById('shell').style.display='none';document.getElementById('viewer').style.display='block';startViewer();}
+else{startDash();}
 async function startViewer(){
   if(!db){vwErr('Firebase ไม่พร้อมใช้งาน');return;}
   try{
@@ -547,36 +426,20 @@ function renderViewer(wo){
     '</div>'+(wo.details?'<div class="vw-card"><p class="vw-card-lbl">Details</p><p class="vw-det">'+x(wo.details)+'</p></div>':'');
 }
 function vwErr(msg){document.getElementById('vw-body').innerHTML='<div class="empty"><div class="e-ico">⚠</div><p style="font-size:13px;color:var(--mid);line-height:1.7;margin-top:8px">'+msg+'</p></div>';}
-
-/* ══════════════════════════════════════
-   DASHBOARD
-══════════════════════════════════════ */
 async function startDash(){
   if(!db){
-    document.getElementById('content').innerHTML=
-      '<div class="empty"><div class="e-ico">⚠</div><div class="e-txt">DATABASE NOT AVAILABLE</div>'+
-      '<div class="e-sub">Firebase ไม่โหลด — ตรวจสอบอินเตอร์เน็ต</div>'+
-      '<button class="btn btn-ghost" onclick="location.reload()" style="margin:14px auto 0">🔄 Reload</button></div>';
+    document.getElementById('content').innerHTML='<div class="empty"><div class="e-ico">⚠</div><div class="e-txt">DATABASE NOT AVAILABLE</div><div class="e-sub">Firebase ไม่โหลด — ตรวจสอบอินเตอร์เน็ต</div><button class="btn btn-ghost" onclick="location.reload()" style="margin:14px auto 0">🔄 Reload</button></div>';
     return;
   }
-  document.getElementById('content').innerHTML=
-    '<div class="empty"><div class="e-ico">📋</div><div class="e-txt">กำลังโหลดข้อมูล...</div></div>';
+  document.getElementById('content').innerHTML='<div class="empty"><div class="e-ico">📋</div><div class="e-txt">กำลังโหลดข้อมูล...</div></div>';
   try{
-    /* Load settings */
     var ss=await ST_REF.once('value');
     if(ss.exists()){
       var d=ss.val();
-      if(d.areas) areas=toArr(d.areas);
-      if(d.jobTypes) jobTypes=toArr(d.jobTypes);
-      if(d.zoneNames){
-        var zn=toArr(d.zoneNames);
-        zn.forEach(function(name,i){if(LAYOUT_ZONES[i])LAYOUT_ZONES[i].name=name;});
-      }
-    }else{
-      ST_REF.child('areas').set(DEF_AREAS);
-      ST_REF.child('jobTypes').set(DEF_TYPES);
-    }
-    /* Realtime listener */
+      if(d.areas)areas=toArr(d.areas);
+      if(d.jobTypes)jobTypes=toArr(d.jobTypes);
+      if(d.zoneNames){var zn=toArr(d.zoneNames);zn.forEach(function(name,i){if(LAYOUT_ZONES[i])LAYOUT_ZONES[i].name=name;});}
+    }else{ST_REF.child('areas').set(DEF_AREAS);ST_REF.child('jobTypes').set(DEF_TYPES);}
     WO_REF.on('value',function(snap){
       var d=snap.val();
       wos=d?Object.entries(d).map(function(e){return Object.assign({},e[1],{fbKey:e[0]});}).sort(function(a,b){return(b.createdAt||0)-(a.createdAt||0);}):[];
@@ -584,78 +447,53 @@ async function startDash(){
       if(viewMode==='layout')renderLayout();else render();
     });
   }catch(e){
-    document.getElementById('content').innerHTML=
-      '<div class="empty"><div class="e-ico">⚠</div><div class="e-txt">CONNECTION ERROR</div>'+
-      '<div class="e-sub">'+x(e.message||'Unknown error')+'</div>'+
-      '<button class="btn btn-ghost" onclick="location.reload()" style="margin:14px auto 0">🔄 Reload</button></div>';
+    document.getElementById('content').innerHTML='<div class="empty"><div class="e-ico">⚠</div><div class="e-txt">CONNECTION ERROR</div><div class="e-sub">'+x(e.message||'Unknown error')+'</div><button class="btn btn-ghost" onclick="location.reload()" style="margin:14px auto 0">🔄 Reload</button></div>';
   }
   document.getElementById('si').addEventListener('input',function(e){sq=e.target.value;render();});
   show('bdg-pub','flex');
 }
-
-/* ── KPI ── */
 function updateKPI(){
   var c={all:wos.length,pending:0,inProgress:0,done:0,hold:0};
   wos.forEach(function(w){if(c[w.status]!==undefined)c[w.status]++;});
-  ['all','pend','prog','done','hold'].forEach(function(k,i){
-    var key=['all','pending','inProgress','done','hold'][i];
-    document.getElementById('k-'+k).textContent=c[key];
-  });
+  ['all','pend','prog','done','hold'].forEach(function(k,i){document.getElementById('k-'+k).textContent=c[['all','pending','inProgress','done','hold'][i]];});
   document.querySelectorAll('.kpi-row').forEach(function(r){r.classList.remove('active');});
   var map={all:'kpi-all',pending:'kpi-pend',inProgress:'kpi-prog',done:'kpi-done',hold:'kpi-hold'};
   var el=document.getElementById(map[filter]);if(el)el.classList.add('active');
 }
-
-/* ── NAV ── */
 function buildNav(){
-  /* Areas */
   var ea=document.getElementById('nav-areas');ea.innerHTML='';
   areas.forEach(function(a){
     var n=wos.filter(function(w){return w.area===a;}).length;
-    var b=document.createElement('button');
-    b.className='nav-item'+(filter==='area:'+a?' active':'');
+    var b=document.createElement('button');b.className='nav-item'+(filter==='area:'+a?' active':'');
     b.innerHTML='<span class="nav-ico">📍</span>'+x(a)+'<span class="nav-ct">'+n+'</span>';
-    b.onclick=function(){setF('area:'+a);};
-    ea.appendChild(b);
+    b.onclick=function(){setF('area:'+a);};ea.appendChild(b);
   });
-  /* Types */
   var et=document.getElementById('nav-types');et.innerHTML='';
   jobTypes.forEach(function(t){
     var n=wos.filter(function(w){return w.jobType===t;}).length;
-    var b=document.createElement('button');
-    b.className='nav-item'+(filter==='type:'+t?' active':'');
+    var b=document.createElement('button');b.className='nav-item'+(filter==='type:'+t?' active':'');
     b.innerHTML='<span class="nav-ico">🔧</span>'+x(t)+'<span class="nav-ct">'+n+'</span>';
-    b.onclick=function(){setF('type:'+t);};
-    et.appendChild(b);
+    b.onclick=function(){setF('type:'+t);};et.appendChild(b);
   });
 }
-
-/* ── FILTER ── */
 function setF(f){
-  viewMode='list';selectedZone=null;filter=f;
-  updateKPI();buildNav();render();
-  var nl=document.getElementById('nav-layout');
-  if(nl)nl.classList.remove('active');
+  viewMode='list';selectedZone=null;filter=f;updateKPI();buildNav();render();
+  var nl=document.getElementById('nav-layout');if(nl)nl.classList.remove('active');
   if(window.innerWidth<=768)closeSB();
 }
-
-/* ── RENDER ── */
 function render(){
   if(viewMode==='layout'){renderLayout();return;}
   var list=wos.slice();
-  if(filter==='all'){}
-  else if(filter.startsWith('area:'))list=list.filter(function(w){return w.area===filter.slice(5);});
+  if(filter.startsWith('area:'))list=list.filter(function(w){return w.area===filter.slice(5);});
   else if(filter.startsWith('type:'))list=list.filter(function(w){return w.jobType===filter.slice(5);});
-  else list=list.filter(function(w){return w.status===filter;});
+  else if(filter!=='all')list=list.filter(function(w){return w.status===filter;});
   var q=sq.toLowerCase();
   if(q)list=list.filter(function(w){return[w.jobName,w.woNumber,w.area,w.jobType,w.details,w.requestedBy].some(function(v){return(v||'').toLowerCase().includes(q);});});
-  /* Breadcrumb */
   var lbl='ALL ORDERS ('+wos.length+')';
   if(filter.startsWith('area:'))lbl='📍 '+filter.slice(5)+' ('+list.length+')';
   else if(filter.startsWith('type:'))lbl='🔧 '+filter.slice(5)+' ('+list.length+')';
   else if(filter!=='all')lbl=(ST[filter]?ST[filter].short:filter)+' ('+list.length+')';
   document.getElementById('tb-cur').textContent=lbl;
-  /* Filter chip bar */
   var chip='';
   if(filter!=='all'||sq){
     var chips=[];
@@ -667,148 +505,68 @@ function render(){
   }
   var el=document.getElementById('content');
   if(!list.length){
-    el.innerHTML=chip+'<div class="empty">'+
-      '<div class="e-ico">'+(wos.length===0?'📋':'🔍')+'</div>'+
-      '<div class="e-txt">'+(wos.length===0?'NO WORK ORDERS YET':'NO RESULTS')+'</div>'+
-      '<div class="e-sub">'+(wos.length===0?'กด NEW WO เพื่อสร้าง Work Order แรก':'ลองเปลี่ยน filter หรือคำค้นหา')+'</div>'+
-      (wos.length===0&&isAdmin?'<button class="btn btn-cyan" onclick="openAdd()" style="margin:16px auto 0">+ NEW WORK ORDER</button>':'')+
-      '</div>';
+    el.innerHTML=chip+'<div class="empty"><div class="e-ico">'+(wos.length===0?'📋':'🔍')+'</div><div class="e-txt">'+(wos.length===0?'NO WORK ORDERS YET':'NO RESULTS')+'</div><div class="e-sub">'+(wos.length===0?'กด NEW WO เพื่อสร้าง Work Order แรก':'ลองเปลี่ยน filter หรือคำค้นหา')+'</div>'+(wos.length===0&&isAdmin?'<button class="btn btn-cyan" onclick="openAdd()" style="margin:16px auto 0">+ NEW WORK ORDER</button>':'')+'</div>';
     return;
   }
   el.innerHTML=chip+list.map(woRow).join('');
 }
 function clrQ(){sq='';document.getElementById('si').value='';render();}
-
-/* ── WO ROW ── */
 function woRow(wo){
   var sc=ST[wo.status]||ST.pending,isU=(wo.priority||'').includes('URGENT');
   var ctrl=isAdmin?
-    '<div class="wo-ctrl">'+
-      Object.keys(ST).map(function(k){return '<button class="sc-btn'+(wo.status===k?' '+ST[k].act:'')+'" onclick="setStat(\''+wo.fbKey+'\',\''+k+'\')">'+ST[k].label+'</button>';}).join('')+
-      '<div class="sc-div"></div>'+
-      '<button class="sc-btn sc-qr" onclick="showTag(\''+wo.fbKey+'\')">🏷 QR Tag</button>'+
-    '</div>'+
-    '<div class="wo-acts">'+
-      '<button class="ra" onclick="openEdit(\''+wo.fbKey+'\')" title="Edit">✏</button>'+
-      '<button class="ra del" onclick="askDel(\''+wo.fbKey+'\')" title="Delete">🗑</button>'+
-    '</div>':'';
-  return '<div class="wo-row st-'+(wo.status||'pending')+'">'+
-    '<div class="wo-stripe"></div>'+
-    '<div class="wo-body">'+
-      '<div class="wo-top">'+
-        '<span class="wo-num">'+x(wo.woNumber)+'</span>'+
-        (isU?'<span class="urg">! URGENT</span>':'')+
-        '<span class="st-pill p-'+(wo.status||'pending')+'">'+sc.label+'</span>'+
-      '</div>'+
-      '<div class="wo-name">'+x(wo.jobName)+'</div>'+
-      '<div class="wo-meta">'+
-        '<span class="mc">📍 '+x(wo.area)+'</span>'+
-        '<span class="mc">🔧 '+x(wo.jobType)+'</span>'+
-        (wo.location?'<span class="mc">📌 '+x(wo.location)+'</span>':'')+
-        '<span class="mc">📅 รับ '+fmtD(wo.dateReceived)+'</span>'+
-        '<span class="mc">🎯 ครบ '+(fmtD(wo.dueDate)||'—')+'</span>'+
-        (wo.requestedBy?'<span class="mc">👤 '+x(wo.requestedBy)+'</span>':'')+
-      '</div>'+
-      (wo.details?'<div class="wo-det">'+x(wo.details)+'</div>':'')+
-    '</div>'+ctrl+
-  '</div>';
+    '<div class="wo-ctrl">'+Object.keys(ST).map(function(k){return'<button class="sc-btn'+(wo.status===k?' '+ST[k].act:'')+'" onclick="setStat(\''+wo.fbKey+'\',\''+k+'\')">'+ST[k].label+'</button>';}).join('')+'<div class="sc-div"></div><button class="sc-btn sc-qr" onclick="showTag(\''+wo.fbKey+'\')">🏷 QR Tag</button></div>'+
+    '<div class="wo-acts"><button class="ra" onclick="openEdit(\''+wo.fbKey+'\')" title="Edit">✏</button><button class="ra del" onclick="askDel(\''+wo.fbKey+'\')" title="Delete">🗑</button></div>':'';
+  return '<div class="wo-row st-'+(wo.status||'pending')+'"><div class="wo-stripe"></div><div class="wo-body">'+
+    '<div class="wo-top"><span class="wo-num">'+x(wo.woNumber)+'</span>'+(isU?'<span class="urg">! URGENT</span>':'')+'<span class="st-pill p-'+(wo.status||'pending')+'">'+sc.label+'</span></div>'+
+    '<div class="wo-name">'+x(wo.jobName)+'</div>'+
+    '<div class="wo-meta"><span class="mc">📍 '+x(wo.area)+'</span><span class="mc">🔧 '+x(wo.jobType)+'</span>'+(wo.location?'<span class="mc">📌 '+x(wo.location)+'</span>':'')+'<span class="mc">📅 รับ '+fmtD(wo.dateReceived)+'</span><span class="mc">🎯 ครบ '+(fmtD(wo.dueDate)||'—')+'</span>'+(wo.requestedBy?'<span class="mc">👤 '+x(wo.requestedBy)+'</span>':'')+'</div>'+
+    (wo.details?'<div class="wo-det">'+x(wo.details)+'</div>':'')+
+    '</div>'+ctrl+'</div>';
 }
-
-/* ── STATUS ── */
-function setStat(key,st){
-  WO_REF.child(key+'/status').set(st);
-  toast(ST[st].label,'ok');
-}
-
-/* ── QR TAG ── */
+function setStat(key,st){WO_REF.child(key+'/status').set(st);toast(ST[st].label,'ok');}
 function showTag(key){
   var wo=wos.find(function(w){return w.fbKey===key;});if(!wo)return;
   var url=location.origin+location.pathname+'?wo='+key;
   var q='https://api.qrserver.com/v1/create-qr-code/?size=160x160&bgcolor=ffffff&color=000000&data='+encodeURIComponent(url)+'&margin=6';
   var isU=(wo.priority||'').includes('URGENT');
   document.getElementById('tag-content').innerHTML=
-    '<div class="tag-box">'+
-      '<div class="tag-hd">'+
-        '<div>'+
-          '<div class="tag-wono">'+x(wo.woNumber)+'</div>'+
-          (isU?'<span class="urg" style="margin-bottom:6px;display:inline-flex">! URGENT</span><br>':'')+
-          '<div class="tag-job">'+x(wo.jobName)+'</div>'+
-        '</div>'+
-        '<div class="tag-qr-wrap"><img src="'+q+'" width="160" height="160" alt="QR"></div>'+
-      '</div>'+
-      '<div class="tag-ft">'+
-        '<span>📍 '+x(wo.area)+'&nbsp;&nbsp;|&nbsp;&nbsp;🔧 '+x(wo.jobType)+'</span>'+
-        '<span>📅 รับ: '+fmtD(wo.dateReceived)+'&nbsp;&nbsp;|&nbsp;&nbsp;🎯 ครบ: '+(fmtD(wo.dueDate)||'—')+'</span>'+
-        (wo.requestedBy?'<span>👤 '+x(wo.requestedBy)+'</span>':'')+
-        '<span data-noprint style="margin-top:8px;color:var(--cyan);font-size:10px">📲 สแกน QR เพื่อดูสถานะงานปัจจุบัน</span>'+
-      '</div>'+
-    '</div>'+
+    '<div class="tag-box"><div class="tag-hd"><div><div class="tag-wono">'+x(wo.woNumber)+'</div>'+(isU?'<span class="urg" style="margin-bottom:6px;display:inline-flex">! URGENT</span><br>':'')+'<div class="tag-job">'+x(wo.jobName)+'</div></div><div class="tag-qr-wrap"><img src="'+q+'" width="160" height="160" alt="QR"></div></div>'+
+    '<div class="tag-ft"><span>📍 '+x(wo.area)+'&nbsp;&nbsp;|&nbsp;&nbsp;🔧 '+x(wo.jobType)+'</span><span>📅 รับ: '+fmtD(wo.dateReceived)+'&nbsp;&nbsp;|&nbsp;&nbsp;🎯 ครบ: '+(fmtD(wo.dueDate)||'—')+'</span>'+(wo.requestedBy?'<span>👤 '+x(wo.requestedBy)+'</span>':'')+'<span data-noprint style="margin-top:8px;color:var(--cyan);font-size:10px">📲 สแกน QR เพื่อดูสถานะงานปัจจุบัน</span></div></div>'+
     '<div class="qr-lg"><img src="'+q+'" width="200" height="200" alt="QR"></div>'+
     '<div class="url-block"><div class="url-lbl">🔗 Scan URL</div><a href="'+url+'" target="_blank" class="url-val">'+url+'</a></div>';
   document.getElementById('m-tag').classList.add('open');
 }
 function closeTag(){document.getElementById('m-tag').classList.remove('open');}
-
-/* ── CREATE / EDIT ── */
 function fillSel(){
   document.getElementById('f-area').innerHTML=areas.map(function(a){return'<option>'+x(a)+'</option>';}).join('');
   document.getElementById('f-type').innerHTML=jobTypes.map(function(t){return'<option>'+x(t)+'</option>';}).join('');
   var locEl=document.getElementById('f-loc');
-  if(locEl){
-    locEl.innerHTML='<option value="">— ไม่ระบุ (Unassigned) —</option>'
-      +LAYOUT_ZONES.map(function(z){return'<option value="'+x(z.name)+'">'+x(z.name)+'</option>';}).join('');
-  }
+  if(locEl)locEl.innerHTML='<option value="">— ไม่ระบุ (Unassigned) —</option>'+LAYOUT_ZONES.map(function(z){return'<option value="'+x(z.name)+'">'+x(z.name)+'</option>';}).join('');
 }
 function openAdd(){
   editKey=null;fillSel();
-  document.getElementById('me-tag').textContent='NEW WO';
-  document.getElementById('me-ttl').textContent='Create Work Order';
-  document.getElementById('me-sub').textContent='Fill in all required fields';
+  document.getElementById('me-tag').textContent='NEW WO';document.getElementById('me-ttl').textContent='Create Work Order';document.getElementById('me-sub').textContent='Fill in all required fields';
   ['f-wono','f-name','f-req','f-det','f-loc'].forEach(function(id){document.getElementById(id).value='';});
-  document.getElementById('f-prio').value='ปกติ (NORMAL)';
-  document.getElementById('f-stat').value='pending';
-  document.getElementById('f-date').value=todayISO();
-  document.getElementById('f-due').value='';
-  document.getElementById('m-edit').classList.add('open');
-  setTimeout(function(){document.getElementById('f-name').focus();},150);
+  document.getElementById('f-prio').value='ปกติ (NORMAL)';document.getElementById('f-stat').value='pending';document.getElementById('f-date').value=todayISO();document.getElementById('f-due').value='';
+  document.getElementById('m-edit').classList.add('open');setTimeout(function(){document.getElementById('f-name').focus();},150);
 }
 function openEdit(key){
   var wo=wos.find(function(w){return w.fbKey===key;});if(!wo)return;
   editKey=key;fillSel();
-  document.getElementById('me-tag').textContent='EDIT WO';
-  document.getElementById('me-ttl').textContent='Edit Work Order';
-  document.getElementById('me-sub').textContent=wo.woNumber;
-  document.getElementById('f-wono').value=wo.woNumber||'';
-  document.getElementById('f-name').value=wo.jobName||'';
-  document.getElementById('f-area').value=wo.area||areas[0];
-  document.getElementById('f-type').value=wo.jobType||jobTypes[0];
-  document.getElementById('f-prio').value=wo.priority||'ปกติ (NORMAL)';
-  document.getElementById('f-stat').value=wo.status||'pending';
-  document.getElementById('f-date').value=wo.dateReceived||'';
-  document.getElementById('f-due').value=wo.dueDate||'';
-  document.getElementById('f-req').value=wo.requestedBy||'';
-  document.getElementById('f-det').value=wo.details||'';
-  document.getElementById('f-loc').value=wo.location||'';
+  document.getElementById('me-tag').textContent='EDIT WO';document.getElementById('me-ttl').textContent='Edit Work Order';document.getElementById('me-sub').textContent=wo.woNumber;
+  document.getElementById('f-wono').value=wo.woNumber||'';document.getElementById('f-name').value=wo.jobName||'';
+  document.getElementById('f-area').value=wo.area||areas[0];document.getElementById('f-type').value=wo.jobType||jobTypes[0];
+  document.getElementById('f-prio').value=wo.priority||'ปกติ (NORMAL)';document.getElementById('f-stat').value=wo.status||'pending';
+  document.getElementById('f-date').value=wo.dateReceived||'';document.getElementById('f-due').value=wo.dueDate||'';
+  document.getElementById('f-req').value=wo.requestedBy||'';document.getElementById('f-det').value=wo.details||'';document.getElementById('f-loc').value=wo.location||'';
   document.getElementById('m-edit').classList.add('open');
 }
 function closeEdit(){document.getElementById('m-edit').classList.remove('open');}
 async function saveWO(){
-  var name=document.getElementById('f-name').value.trim();
-  var area=document.getElementById('f-area').value;
-  var type=document.getElementById('f-type').value;
+  var name=document.getElementById('f-name').value.trim(),area=document.getElementById('f-area').value,type=document.getElementById('f-type').value;
   if(!name||!area||!type){toast('กรุณากรอก Job Name, Area และ Type','warn');return;}
   var sb=document.getElementById('save-btn');sb.disabled=true;sb.textContent='SAVING...';
-  var data={
-    woNumber:document.getElementById('f-wono').value.trim()||genWO(),
-    jobName:name,area:area,jobType:type,
-    location:document.getElementById('f-loc').value,
-    priority:document.getElementById('f-prio').value,
-    status:document.getElementById('f-stat').value,
-    dateReceived:document.getElementById('f-date').value,
-    dueDate:document.getElementById('f-due').value,
-    requestedBy:document.getElementById('f-req').value.trim(),
-    details:document.getElementById('f-det').value.trim()
-  };
+  var data={woNumber:document.getElementById('f-wono').value.trim()||genWO(),jobName:name,area:area,jobType:type,location:document.getElementById('f-loc').value,priority:document.getElementById('f-prio').value,status:document.getElementById('f-stat').value,dateReceived:document.getElementById('f-date').value,dueDate:document.getElementById('f-due').value,requestedBy:document.getElementById('f-req').value.trim(),details:document.getElementById('f-det').value.trim()};
   try{
     if(editKey){await WO_REF.child(editKey).update(data);toast('Work Order updated','ok');}
     else{await WO_REF.push(Object.assign({},data,{createdAt:Date.now()}));toast('Work Order created','ok');}
@@ -816,13 +574,9 @@ async function saveWO(){
   }catch(e){toast('Error: '+e.message,'warn');}
   sb.disabled=false;sb.textContent='SAVE WORK ORDER';
 }
-
-/* ── DELETE ── */
 function askDel(key){delKey=key;document.getElementById('m-del').classList.add('open');}
 function closeDel(){document.getElementById('m-del').classList.remove('open');}
 function doDel(){WO_REF.child(delKey).remove();closeDel();toast('Deleted','ok');}
-
-/* ── SETTINGS ── */
 function openSet(){sTab='areas';setEditIdx=null;renderSet();document.getElementById('m-set').classList.add('open');}
 function closeSet(){document.getElementById('m-set').classList.remove('open');setEditIdx=null;}
 function switchTab(t){
@@ -830,75 +584,50 @@ function switchTab(t){
   document.getElementById('tab-a').classList.toggle('active',t==='areas');
   document.getElementById('tab-t').classList.toggle('active',t==='types');
   document.getElementById('tab-z').classList.toggle('active',t==='zones');
-  var ni=document.getElementById('new-item');
-  if(ni){ni.style.display=(t==='zones'?'none':'');ni.value='';}
-  var ab=document.querySelector('.add-row .btn-cyan');
-  if(ab) ab.style.display=(t==='zones'?'none':'');
+  var ni=document.getElementById('new-item');if(ni){ni.style.display=(t==='zones'?'none':'');ni.value='';}
+  var ab=document.querySelector('.add-row .btn-cyan');if(ab)ab.style.display=(t==='zones'?'none':'');
   renderSet();
 }
 function curL(){return sTab==='areas'?areas:(sTab==='zones'?LAYOUT_ZONES.map(function(z){return z.name;}):jobTypes);}
 function saveL(arr){
   if(sTab==='areas'){areas=arr;ST_REF.child('areas').set(arr);}
-  else if(sTab==='zones'){
-    /* update LAYOUT_ZONES names in-place */
-    arr.forEach(function(name,i){if(LAYOUT_ZONES[i])LAYOUT_ZONES[i].name=name;});
-    ST_REF.child('zoneNames').set(arr);
-    if(viewMode==='layout')renderLayout();
-  }
+  else if(sTab==='zones'){arr.forEach(function(name,i){if(LAYOUT_ZONES[i])LAYOUT_ZONES[i].name=name;});ST_REF.child('zoneNames').set(arr);if(viewMode==='layout')renderLayout();}
   else{jobTypes=arr;ST_REF.child('jobTypes').set(arr);}
   buildNav();
 }
 function saveZoneName(i){
   var inp=document.getElementById('sei');if(!inp)return;
   var v=inp.value.trim();if(!v)return;
-  var arr=LAYOUT_ZONES.map(function(z){return z.name;});
-  arr[i]=v;
-  LAYOUT_ZONES[i].name=v;
-  ST_REF.child('zoneNames').set(arr);
-  setEditIdx=null;renderSet();
+  var arr=LAYOUT_ZONES.map(function(z){return z.name;});arr[i]=v;LAYOUT_ZONES[i].name=v;
+  ST_REF.child('zoneNames').set(arr);setEditIdx=null;renderSet();
   if(viewMode==='layout')renderLayout();
-  /* Rebuild f-loc dropdown if open */
-  if(document.getElementById('m-edit').classList.contains('open')){
-    var cur=document.getElementById('f-loc').value;
-    fillSel();
-    document.getElementById('f-loc').value=cur;
-  }
+  if(document.getElementById('m-edit').classList.contains('open')){var cur=document.getElementById('f-loc').value;fillSel();document.getElementById('f-loc').value=cur;}
   toast('Zone name updated','ok');
 }
 function renderSet(){
-  /* Zones tab: special inline-edit only (no add/delete) */
   if(sTab==='zones'){
     var el2=document.getElementById('set-list');el2.innerHTML='';
     LAYOUT_ZONES.forEach(function(z,i){
       var d=document.createElement('div');d.className='set-item';
       if(setEditIdx===i){
-        var inp=document.createElement('input');inp.className='fi';inp.value=z.name;inp.style.flex='1';inp.id='sei';
-        inp.onkeydown=function(e){if(e.key==='Enter')saveZoneName(i);};
-        d.appendChild(inp);
-        d.appendChild(mkSBtn('Save','s-sv',function(){saveZoneName(i);}));
-        d.appendChild(mkSBtn('Cancel','s-cx',function(){setEditIdx=null;renderSet();}));
+        var inp=document.createElement('input');inp.className='fi';inp.value=z.name;inp.style.flex='1';inp.id='sei';inp.onkeydown=function(e){if(e.key==='Enter')saveZoneName(i);};
+        d.appendChild(inp);d.appendChild(mkSBtn('Save','s-sv',function(){saveZoneName(i);}));d.appendChild(mkSBtn('Cancel','s-cx',function(){setEditIdx=null;renderSet();}));
         setTimeout(function(){inp.focus();},40);
-      } else {
+      }else{
         var dot=document.createElement('div');dot.className='set-dot';dot.style.background='var(--cyan)';
-        var sp=document.createElement('span');sp.className='set-txt';
-        sp.innerHTML='<span style="font-family:var(--mono);font-size:9px;color:var(--lo);margin-right:8px">'+('Z'+(i+1))+'</span>'+x(z.name);
-        var sa=document.createElement('div');sa.className='set-acts';
-        sa.appendChild(mkSBtn('Rename','s-ed',(function(i2){return function(){setEditIdx=i2;renderSet();};})(i)));
+        var sp=document.createElement('span');sp.className='set-txt';sp.innerHTML='<span style="font-family:var(--mono);font-size:9px;color:var(--lo);margin-right:8px">Z'+(i+1)+'</span>'+x(z.name);
+        var sa=document.createElement('div');sa.className='set-acts';sa.appendChild(mkSBtn('Rename','s-ed',(function(i2){return function(){setEditIdx=i2;renderSet();};})(i)));
         d.appendChild(dot);d.appendChild(sp);d.appendChild(sa);
       }
       el2.appendChild(d);
-    });
-    return;
+    });return;
   }
   var items=curL(),el=document.getElementById('set-list');el.innerHTML='';
   items.forEach(function(item,i){
     var d=document.createElement('div');d.className='set-item';
     if(setEditIdx===i){
-      var inp=document.createElement('input');inp.className='fi';inp.value=item;inp.style.flex='1';inp.id='sei';
-      inp.onkeydown=function(e){if(e.key==='Enter')saveSetItem(i);};
-      d.appendChild(inp);
-      d.appendChild(mkSBtn('Save','s-sv',function(){saveSetItem(i);}));
-      d.appendChild(mkSBtn('Cancel','s-cx',function(){setEditIdx=null;renderSet();}));
+      var inp=document.createElement('input');inp.className='fi';inp.value=item;inp.style.flex='1';inp.id='sei';inp.onkeydown=function(e){if(e.key==='Enter')saveSetItem(i);};
+      d.appendChild(inp);d.appendChild(mkSBtn('Save','s-sv',function(){saveSetItem(i);}));d.appendChild(mkSBtn('Cancel','s-cx',function(){setEditIdx=null;renderSet();}));
       setTimeout(function(){inp.focus();},40);
     }else{
       var dot=document.createElement('div');dot.className='set-dot';
@@ -912,308 +641,106 @@ function renderSet(){
   });
 }
 function mkSBtn(t,c,fn){var b=document.createElement('button');b.className='s-btn '+c;b.textContent=t;b.onclick=fn;return b;}
-function addItem(){
-  var v=(document.getElementById('new-item').value||'').trim();
-  if(!v)return;
-  saveL([...curL(),v]);renderSet();document.getElementById('new-item').value='';toast('Added','ok');
-}
-function saveSetItem(i){
-  var inp=document.getElementById('sei');if(!inp)return;
-  var v=inp.value.trim();if(!v)return;
-  var arr=[...curL()];arr[i]=v;saveL(arr);setEditIdx=null;renderSet();toast('Updated','ok');
-}
-function delSetItem(i){
-  if(!confirm('Delete this item?'))return;
-  var arr=[...curL()];arr.splice(i,1);saveL(arr);setEditIdx=null;renderSet();toast('Deleted','ok');
-}
-
-/* ── AUTH ── */
+function addItem(){var v=(document.getElementById('new-item').value||'').trim();if(!v)return;saveL([...curL(),v]);renderSet();document.getElementById('new-item').value='';toast('Added','ok');}
+function saveSetItem(i){var inp=document.getElementById('sei');if(!inp)return;var v=inp.value.trim();if(!v)return;var arr=[...curL()];arr[i]=v;saveL(arr);setEditIdx=null;renderSet();toast('Updated','ok');}
+function delSetItem(i){if(!confirm('Delete this item?'))return;var arr=[...curL()];arr.splice(i,1);saveL(arr);setEditIdx=null;renderSet();toast('Deleted','ok');}
 async function hashPw(pw){
-  try{
-    if(typeof crypto!=='undefined'&&crypto.subtle){
-      var buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(pw+'WOS_v2_SALT'));
-      return Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0');}).join('');
-    }
-  }catch(e){ /* fallback below */ }
-  /* Fallback for file:// or non-HTTPS: direct match */
+  try{if(typeof crypto!=='undefined'&&crypto.subtle){var buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(pw+'WOS_v2_SALT'));return Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0');}).join('');}}catch(e){}
   return pw==='workshop2024'?PW_HASH:'invalid_'+pw.length;
 }
-function openLogin(){
-  document.getElementById('lpw').value='';
-  document.getElementById('lerr').style.display='none';
-  document.getElementById('m-login').classList.add('open');
-  setTimeout(function(){document.getElementById('lpw').focus();},120);
-}
+function openLogin(){document.getElementById('lpw').value='';document.getElementById('lerr').style.display='none';document.getElementById('m-login').classList.add('open');setTimeout(function(){document.getElementById('lpw').focus();},120);}
 function closeLogin(){document.getElementById('m-login').classList.remove('open');}
 async function doLogin(){
   var pw=document.getElementById('lpw').value;
   if(!pw){document.getElementById('lerr').style.display='block';return;}
   try{
     var h=await hashPw(pw);
-    if(h===PW_HASH){
-      isAdmin=true;closeLogin();applyMode();toast('AUTHENTICATED','ok');
-    }else{
-      document.getElementById('lerr').style.display='block';
-      document.getElementById('lpw').select();
-    }
-  }catch(e){
-    document.getElementById('lerr').textContent='⚠ Auth error: '+e.message;
-    document.getElementById('lerr').style.display='block';
-  }
+    if(h===PW_HASH){isAdmin=true;closeLogin();applyMode();toast('AUTHENTICATED','ok');}
+    else{document.getElementById('lerr').style.display='block';document.getElementById('lpw').select();}
+  }catch(e){document.getElementById('lerr').textContent='⚠ Auth error: '+e.message;document.getElementById('lerr').style.display='block';}
 }
 function doLogout(){isAdmin=false;applyMode();toast('LOGGED OUT','warn');}
 function applyMode(){
-  show('btn-add',isAdmin?'inline-flex':'none');
-  show('btn-set',isAdmin?'flex':'none');
-  show('btn-out',isAdmin?'flex':'none');
-  show('fab',isAdmin?'flex':'none');
-  show('bdg-adm',isAdmin?'flex':'none');
-  show('btn-in',isAdmin?'none':'inline-flex');
-  show('bdg-pub',isAdmin?'none':'flex');
+  show('btn-add',isAdmin?'inline-flex':'none');show('btn-set',isAdmin?'flex':'none');show('btn-out',isAdmin?'flex':'none');
+  show('fab',isAdmin?'flex':'none');show('bdg-adm',isAdmin?'flex':'none');show('btn-in',isAdmin?'none':'inline-flex');show('bdg-pub',isAdmin?'none':'flex');
   render();
 }
-
-/* ═══ LAYOUT VIEW FUNCTIONS ═══ */
 function showLayoutView(){
-  viewMode='layout';selectedZone=null;filter='all';
-  updateKPI();
+  viewMode='layout';selectedZone=null;filter='all';updateKPI();
   document.querySelectorAll('.kpi-row').forEach(function(r){r.classList.remove('active');});
   document.getElementById('kpi-all').classList.add('active');
   document.querySelectorAll('#sb-nav .nav-item').forEach(function(b){b.classList.remove('active');});
   var nl=document.getElementById('nav-layout');if(nl)nl.classList.add('active');
-  renderLayout();
-  if(window.innerWidth<=768)closeSB();
+  renderLayout();if(window.innerWidth<=768)closeSB();
 }
-
-function selectZone(zid){
-  selectedZone=(selectedZone===zid?null:zid);
-  renderLayout();
-  /* Re-attach handlers */
-  var el=document.getElementById('content');
-  el.querySelectorAll('[data-zid]').forEach(function(g){
-    g.addEventListener('click',function(){selectZone(this.getAttribute('data-zid'));});
-  });
-}
-
 function renderLayout(){
-  var el=document.getElementById('content');
-  var W=900,H=430;
-
-  /* Count WOs per zone */
-  var cnt={};
-  LAYOUT_ZONES.forEach(function(z){
-    cnt[z.id]=wos.filter(function(w){return w.location===z.name;});
-  });
-
-  /* ── BUILD SVG ── */
+  var el=document.getElementById('content'),W=900,H=430;
+  var cnt={};LAYOUT_ZONES.forEach(function(z){cnt[z.id]=wos.filter(function(w){return w.location===z.name;});});
   var s='<svg viewBox="0 0 '+W+' '+H+'" xmlns="http://www.w3.org/2000/svg">';
-
-  /* Defs: grid pattern + arrow marker */
-  s+='<defs>'
-   +'<pattern id="wg" width="40" height="40" patternUnits="userSpaceOnUse">'
-   +'<path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(6,182,212,0.07)" stroke-width="0.5"/>'
-   +'</pattern>'
-   +'<marker id="sarr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">'
-   +'<path d="M0,0 L6,3 L0,6 Z" fill="#22d3ee"/>'
-   +'</marker>'
-   +'</defs>';
-
-  /* Background */
-  s+='<rect width="'+W+'" height="'+H+'" fill="#030d17"/>';
-  s+='<rect width="'+W+'" height="'+H+'" fill="url(#wg)"/>';
-
-  /* Outer wall */
+  s+='<defs><pattern id="wg" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(6,182,212,0.07)" stroke-width="0.5"/></pattern><marker id="sarr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#22d3ee"/></marker></defs>';
+  s+='<rect width="'+W+'" height="'+H+'" fill="#030d17"/><rect width="'+W+'" height="'+H+'" fill="url(#wg)"/>';
   s+='<rect x="1" y="1" width="'+(W-2)+'" height="'+(H-2)+'" fill="none" stroke="#1f4068" stroke-width="2" rx="3"/>';
-
-  /* ── Top wall with shutter gaps ── */
-  /* Gaps: S1=x42-102, S2=x356-416, S3=x642-702 */
-  [[1,42],[102,356],[416,642],[702,W-1]].forEach(function(seg){
-    s+='<rect x="'+seg[0]+'" y="1" width="'+(seg[1]-seg[0])+'" height="44" fill="#0a1d2f" stroke="#163050" stroke-width="0.5"/>';
-  });
-
-  /* Shutter openings */
+  [[1,42],[102,356],[416,642],[702,W-1]].forEach(function(seg){s+='<rect x="'+seg[0]+'" y="1" width="'+(seg[1]-seg[0])+'" height="44" fill="#0a1d2f" stroke="#163050" stroke-width="0.5"/>';});
   [{x:42,cx:72,n:1},{x:356,cx:386,n:2},{x:642,cx:672,n:3}].forEach(function(sh){
     s+='<rect x="'+sh.x+'" y="1" width="60" height="44" fill="rgba(6,182,212,0.07)" stroke="#22d3ee" stroke-width="0.8" stroke-dasharray="4,3"/>';
     s+='<line x1="'+sh.cx+'" y1="7" x2="'+sh.cx+'" y2="32" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#sarr)"/>';
     s+='<text x="'+sh.cx+'" y="47" text-anchor="middle" fill="#2e5470" font-size="7.5" font-family="monospace" letter-spacing="1">S'+sh.n+'</text>';
   });
-
-  /* ── Non-interactive structural blocks ── */
-  /* Upper-left storage block */
   s+='<rect x="118" y="44" width="232" height="134" fill="#0a1d2f" stroke="#163050" stroke-width="1"/>';
   s+='<text x="234" y="101" text-anchor="middle" dominant-baseline="middle" fill="#1f4068" font-size="9" font-family="monospace" letter-spacing="2">STORAGE /</text>';
   s+='<text x="234" y="115" text-anchor="middle" dominant-baseline="middle" fill="#1f4068" font-size="9" font-family="monospace" letter-spacing="2">EQUIPMENT</text>';
-  /* Upper-center equipment blocks */
-  s+='<rect x="354" y="44" width="90" height="134" fill="#0a1d2f" stroke="#163050" stroke-width="1"/>';
-  s+='<text x="399" y="111" text-anchor="middle" dominant-baseline="middle" fill="#1f4068" font-size="8" font-family="monospace">EQUIP</text>';
-  /* Mid-center equipment */
-  s+='<rect x="354" y="182" width="88" height="101" fill="#0a1d2f" stroke="#163050" stroke-width="1"/>';
-  s+='<text x="398" y="233" text-anchor="middle" dominant-baseline="middle" fill="#1f4068" font-size="8" font-family="monospace">EQUIP</text>';
-  /* Wall between Z4 and Z5 */
+  s+='<rect x="354" y="44" width="90" height="134" fill="#0a1d2f" stroke="#163050" stroke-width="1"/><text x="399" y="111" text-anchor="middle" dominant-baseline="middle" fill="#1f4068" font-size="8" font-family="monospace">EQUIP</text>';
+  s+='<rect x="354" y="182" width="88" height="101" fill="#0a1d2f" stroke="#163050" stroke-width="1"/><text x="398" y="233" text-anchor="middle" dominant-baseline="middle" fill="#1f4068" font-size="8" font-family="monospace">EQUIP</text>';
   s+='<rect x="630" y="44" width="70" height="134" fill="#0a1d2f" stroke="#163050" stroke-width="1"/>';
-
-  /* Separator dashed lines */
   s+='<line x1="2" y1="182" x2="'+(W-2)+'" y2="182" stroke="#163050" stroke-width="1" stroke-dasharray="8,5"/>';
   s+='<line x1="2" y1="285" x2="'+(W-2)+'" y2="285" stroke="#163050" stroke-width="1" stroke-dasharray="8,5"/>';
-
-  /* ── CLICKABLE ZONES ── */
   LAYOUT_ZONES.forEach(function(z){
-    var wosHere=cnt[z.id]||[];
-    var n=wosHere.length;
-    var isSel=(selectedZone===z.id);
-    var sw=isSel?2.5:1.2;
-    var fo=isSel?1:0.88;
-
+    var wosHere=cnt[z.id]||[],n=wosHere.length,isSel=(selectedZone===z.id),sw=isSel?2.5:1.2,fo=isSel?1:0.88;
     z.rects.forEach(function(r,ri){
       s+='<g data-zid="'+z.id+'" class="zone-g'+(isSel?' sel':'')+'" style="cursor:pointer">';
-      s+='<rect x="'+r.x+'" y="'+r.y+'" width="'+r.w+'" height="'+r.h
-       +'" fill="'+z.fill+'" opacity="'+fo+'" stroke="'+z.stroke+'" stroke-width="'+sw+'"/>';
-
+      s+='<rect x="'+r.x+'" y="'+r.y+'" width="'+r.w+'" height="'+r.h+'" fill="'+z.fill+'" opacity="'+fo+'" stroke="'+z.stroke+'" stroke-width="'+sw+'"/>';
       if(ri===0){
-        /* Primary label */
-        s+='<text x="'+z.tx+'" y="'+z.ty
-         +'" text-anchor="middle" dominant-baseline="middle"'
-         +' fill="'+z.stroke+'" font-size="10" font-weight="700"'
-         +' font-family="monospace" letter-spacing="1.2">'+z.label+'</text>';
-        /* WO count badge */
-        if(n>0){
-          var bx=r.x+r.w-16,by=r.y+12;
-          s+='<circle cx="'+bx+'" cy="'+by+'" r="11" fill="'+z.stroke+'"/>';
-          s+='<text x="'+bx+'" y="'+by
-           +'" text-anchor="middle" dominant-baseline="middle"'
-           +' fill="#030d17" font-size="9" font-weight="800" font-family="monospace">'+n+'</text>';
-        }
-        /* Urgent indicator */
-        var urgent=wosHere.filter(function(w){return(w.priority||'').includes('URGENT')&&w.status!='done';});
-        if(urgent.length>0){
-          s+='<circle cx="'+(r.x+14)+'" cy="'+(r.y+12)+'" r="6" fill="rgba(239,68,68,0.9)">';
-          s+='<animate attributeName="r" values="6;8;6" dur="1.2s" repeatCount="indefinite"/>';
-          s+='</circle>';
-          s+='<text x="'+(r.x+14)+'" y="'+(r.y+12)+'" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-size="7" font-weight="800" font-family="monospace">!</text>';
-        }
-      } else {
-        /* Secondary rect — smaller label */
-        s+='<text x="'+(r.x+r.w/2)+'" y="'+(r.y+r.h/2)
-         +'" text-anchor="middle" dominant-baseline="middle"'
-         +' fill="'+z.stroke+'" font-size="9" font-weight="600"'
-         +' font-family="monospace" letter-spacing="1">'+z.label+'</text>';
-        if(n>0){
-          var bx2=r.x+r.w-14,by2=r.y+12;
-          s+='<circle cx="'+bx2+'" cy="'+by2+'" r="10" fill="'+z.stroke+'"/>';
-          s+='<text x="'+bx2+'" y="'+by2
-           +'" text-anchor="middle" dominant-baseline="middle"'
-           +' fill="#030d17" font-size="8" font-weight="800" font-family="monospace">'+n+'</text>';
-        }
+        s+='<text x="'+z.tx+'" y="'+z.ty+'" text-anchor="middle" dominant-baseline="middle" fill="'+z.stroke+'" font-size="10" font-weight="700" font-family="monospace" letter-spacing="1.2">'+z.label+'</text>';
+        if(n>0){var bx=r.x+r.w-16,by=r.y+12;s+='<circle cx="'+bx+'" cy="'+by+'" r="11" fill="'+z.stroke+'"/><text x="'+bx+'" y="'+by+'" text-anchor="middle" dominant-baseline="middle" fill="#030d17" font-size="9" font-weight="800" font-family="monospace">'+n+'</text>';}
+        var urg=wosHere.filter(function(w){return(w.priority||'').includes('URGENT')&&w.status!='done';});
+        if(urg.length>0){s+='<circle cx="'+(r.x+14)+'" cy="'+(r.y+12)+'" r="6" fill="rgba(239,68,68,0.9)"><animate attributeName="r" values="6;8;6" dur="1.2s" repeatCount="indefinite"/></circle><text x="'+(r.x+14)+'" y="'+(r.y+12)+'" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-size="7" font-weight="800" font-family="monospace">!</text>';}
+      }else{
+        s+='<text x="'+(r.x+r.w/2)+'" y="'+(r.y+r.h/2)+'" text-anchor="middle" dominant-baseline="middle" fill="'+z.stroke+'" font-size="9" font-weight="600" font-family="monospace" letter-spacing="1">'+z.label+'</text>';
+        if(n>0){var bx2=r.x+r.w-14,by2=r.y+12;s+='<circle cx="'+bx2+'" cy="'+by2+'" r="10" fill="'+z.stroke+'"/><text x="'+bx2+'" y="'+by2+'" text-anchor="middle" dominant-baseline="middle" fill="#030d17" font-size="8" font-weight="800" font-family="monospace">'+n+'</text>';}
       }
       s+='</g>';
     });
   });
-
-  /* Watermark */
-  s+='<text x="'+(W-8)+'" y="'+(H-6)+'" text-anchor="end" fill="#163050" font-size="7" font-family="monospace" letter-spacing="1.5">WORKSHOP FLOOR PLAN</text>';
-  s+='</svg>';
-
-  /* ── LEGEND ── */
-  var leg='<div class="layout-legend">';
-  LAYOUT_ZONES.forEach(function(z){
-    leg+='<span class="leg-item"><span class="leg-box" style="background:'+z.stroke+';opacity:.7"></span>'+z.name+'</span>';
-  });
-  leg+='</div>';
-  leg+='<div class="lsv-tip">กดที่พื้นที่เพื่อดูงานในบริเวณนั้น</div>';
-
-  /* ── ZONE DETAIL PANEL ── */
+  s+='<text x="'+(W-8)+'" y="'+(H-6)+'" text-anchor="end" fill="#163050" font-size="7" font-family="monospace" letter-spacing="1.5">WORKSHOP FLOOR PLAN</text></svg>';
+  var leg='<div class="layout-legend">'+LAYOUT_ZONES.map(function(z){return'<span class="leg-item"><span class="leg-box" style="background:'+z.stroke+';opacity:.7"></span>'+z.name+'</span>';}).join('')+'</div><div class="lsv-tip">กดที่พื้นที่เพื่อดูงานในบริเวณนั้น</div>';
   var detail='';
   if(selectedZone){
     var zInfo=LAYOUT_ZONES.find(function(z){return z.id===selectedZone;});
     if(zInfo){
       var zWOs=cnt[selectedZone]||[];
-      detail='<div class="zdp">'
-       +'<div class="zdp-hd">'
-       +'<div class="zdp-ico">📌</div>'
-       +'<div class="zdp-name">'+x(zInfo.name)+'</div>'
-       +'<span class="zdp-badge">'+zWOs.length+' WO</span>'
-       +'<button class="zdp-x" onclick="selectedZone=null;renderLayout()">✕</button>'
-       +'</div>';
-      if(zWOs.length===0){
-        detail+='<div class="zdp-empty">📭 &nbsp; ไม่มีงานในพื้นที่นี้ในขณะนี้</div>';
-      } else {
+      detail='<div class="zdp"><div class="zdp-hd"><div class="zdp-ico">📌</div><div class="zdp-name">'+x(zInfo.name)+'</div><span class="zdp-badge">'+zWOs.length+' WO</span><button class="zdp-x" onclick="selectedZone=null;renderLayout()">✕</button></div>';
+      if(zWOs.length===0){detail+='<div class="zdp-empty">📭 &nbsp; ไม่มีงานในพื้นที่นี้ในขณะนี้</div>';}
+      else{
         detail+=zWOs.map(function(wo){
-          var sc=ST[wo.status]||ST.pending;
-          var isU=(wo.priority||'').includes('URGENT');
-          var ctrl=isAdmin?
-            '<div class="wo-ctrl">'
-             +Object.keys(ST).map(function(k){return'<button class="sc-btn'+(wo.status===k?' '+ST[k].act:'')+'" onclick="setStat(\''+wo.fbKey+'\',\''+k+'\')">'+ST[k].label+'</button>';}).join('')
-             +'<div class="sc-div"></div>'
-             +'<button class="sc-btn sc-qr" onclick="showTag(\''+wo.fbKey+'\')">🏷 QR Tag</button>'
-             +'</div>'
-             +'<div class="wo-acts">'
-             +'<button class="ra" onclick="openEdit(\''+wo.fbKey+'\')" title="Edit">✏</button>'
-             +'<button class="ra del" onclick="askDel(\''+wo.fbKey+'\')" title="Delete">🗑</button>'
-             +'</div>':'';
-          return '<div class="wo-row st-'+(wo.status||'pending')+'">'
-            +'<div class="wo-stripe"></div>'
-            +'<div class="wo-body">'
-              +'<div class="wo-top">'
-                +'<span class="wo-num">'+x(wo.woNumber)+'</span>'
-                +(isU?'<span class="urg">! URGENT</span>':'')
-                +'<span class="st-pill p-'+(wo.status||'pending')+'">'+sc.label+'</span>'
-              +'</div>'
-              +'<div class="wo-name">'+x(wo.jobName)+'</div>'
-              +'<div class="wo-meta">'
-                +'<span class="mc">📍 '+x(wo.area)+'</span>'
-                +'<span class="mc">🔧 '+x(wo.jobType)+'</span>'
-                +'<span class="mc">📅 รับ '+fmtD(wo.dateReceived)+'</span>'
-                +'<span class="mc">🎯 ครบ '+(fmtD(wo.dueDate)||'—')+'</span>'
-              +'</div>'
-            +'</div>'
-            +ctrl
-            +'</div>';
+          var sc=ST[wo.status]||ST.pending,isU=(wo.priority||'').includes('URGENT');
+          var ctrl=isAdmin?'<div class="wo-ctrl">'+Object.keys(ST).map(function(k){return'<button class="sc-btn'+(wo.status===k?' '+ST[k].act:'')+'" onclick="setStat(\''+wo.fbKey+'\',\''+k+'\')">'+ST[k].label+'</button>';}).join('')+'<div class="sc-div"></div><button class="sc-btn sc-qr" onclick="showTag(\''+wo.fbKey+'\')">🏷 QR Tag</button></div><div class="wo-acts"><button class="ra" onclick="openEdit(\''+wo.fbKey+'\')" title="Edit">✏</button><button class="ra del" onclick="askDel(\''+wo.fbKey+'\')" title="Delete">🗑</button></div>':'';
+          return'<div class="wo-row st-'+(wo.status||'pending')+'"><div class="wo-stripe"></div><div class="wo-body"><div class="wo-top"><span class="wo-num">'+x(wo.woNumber)+'</span>'+(isU?'<span class="urg">! URGENT</span>':'')+'<span class="st-pill p-'+(wo.status||'pending')+'">'+sc.label+'</span></div><div class="wo-name">'+x(wo.jobName)+'</div><div class="wo-meta"><span class="mc">📍 '+x(wo.area)+'</span><span class="mc">🔧 '+x(wo.jobType)+'</span><span class="mc">📅 รับ '+fmtD(wo.dateReceived)+'</span><span class="mc">🎯 ครบ '+(fmtD(wo.dueDate)||'—')+'</span></div></div>'+ctrl+'</div>';
         }).join('');
       }
       detail+='</div>';
     }
   }
-
-  /* ── ASSEMBLE ── */
-  el.innerHTML='<div class="lsv-wrap">'
-   +'<div class="lsv-box">'+s+'</div>'
-   +leg+detail
-   +'</div>';
-
-  /* ── ATTACH CLICK HANDLERS (no inline onclick needed) ── */
-  el.querySelectorAll('[data-zid]').forEach(function(g){
-    g.addEventListener('click',function(){
-      selectedZone=(selectedZone===this.getAttribute('data-zid')?null:this.getAttribute('data-zid'));
-      renderLayout();
-    });
-  });
+  el.innerHTML='<div class="lsv-wrap"><div class="lsv-box">'+s+'</div>'+leg+detail+'</div>';
+  el.querySelectorAll('[data-zid]').forEach(function(g){g.addEventListener('click',function(){selectedZone=(selectedZone===this.getAttribute('data-zid')?null:this.getAttribute('data-zid'));renderLayout();});});
 }
-
-/* ── HELPERS ── */
 function show(id,v){var el=document.getElementById(id);if(el)el.style.display=v;}
 function x(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
-function fmtD(d){
-  if(!d)return'';
-  try{var dt=new Date(d);return isNaN(dt)?d:dt.toLocaleDateString('th-TH',{day:'2-digit',month:'short',year:'numeric'});}
-  catch(e){return d;}
-}
+function fmtD(d){if(!d)return'';try{var dt=new Date(d);return isNaN(dt)?d:dt.toLocaleDateString('th-TH',{day:'2-digit',month:'short',year:'numeric'});}catch(e){return d;}}
 function todayISO(){return new Date().toISOString().split('T')[0];}
 function toArr(v){return Array.isArray(v)?v:Object.values(v);}
-function genWO(){
-  var n=new Date(),yr=(n.getFullYear()+543).toString().slice(-2),mo=String(n.getMonth()+1).padStart(2,'0');
-  return'WO-'+yr+mo+'-'+(Math.floor(Math.random()*900)+100);
-}
-function bgX(e,id){
-  if(e.target.id===id){
-    ({
-      'm-login':closeLogin,'m-edit':closeEdit,'m-tag':closeTag,
-      'm-set':closeSet,'m-del':closeDel
-    }[id]||function(){})();
-  }
-}
-document.addEventListener('keydown',function(e){
-  if(e.key==='Escape'){closeLogin();closeEdit();closeTag();closeSet();closeDel();}
-});
+function genWO(){var n=new Date(),yr=(n.getFullYear()+543).toString().slice(-2),mo=String(n.getMonth()+1).padStart(2,'0');return'WO-'+yr+mo+'-'+(Math.floor(Math.random()*900)+100);}
+function bgX(e,id){if(e.target.id===id){({'m-login':closeLogin,'m-edit':closeEdit,'m-tag':closeTag,'m-set':closeSet,'m-del':closeDel}[id]||function(){})();}}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeLogin();closeEdit();closeTag();closeSet();closeDel();}});
 var tT;
 function toast(msg,type){
   var el=document.getElementById('toast');el.innerHTML='';
